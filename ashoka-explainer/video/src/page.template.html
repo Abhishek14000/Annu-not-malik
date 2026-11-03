@@ -167,7 +167,7 @@ body{font-family:Inter,sans-serif;color:var(--ink);position:relative}
 <!-- SARNATH -->
 <div class="scene" id="sSar">
   <div class="abs" style="inset:0;background:var(--stone)"></div>
-  <div class="slot" id="slotSarnath" style="left:40px;top:150px;width:1000px;height:1130px"></div>
+  <div class="slot" id="slotSarnath" style="left:40px;top:400px;width:1000px;height:880px"></div>
   <div class="abs card" style="left:70px;top:210px;width:940px;padding:26px 36px"><div class="h1" style="font-size:78px">Remorse → <span class="hl" id="govHl" style="--w:0%">a way to govern</span></div></div>
 </div>
 
@@ -209,7 +209,7 @@ function pop(el,a,d=.4,rot=0){const p=prog(window.__t,a,d);el.style.opacity=clam
 function hl(el,a,d=.45){el.style.setProperty('--w',(eo(prog(window.__t,a,d))*100)+'%')}
 // ---- photo slots ----
 function initSlot(id,key){const el=$(id),p=PHOTOS[key];
-  if(p.file){el.innerHTML=`<img src="${p.file}">`+(p.credit?`<div class="credit">${p.credit}</div>`:'')+(p.status==='unverified-preview'?`<div class="wm">UNVERIFIED · PREVIEW ONLY</div>`:'')}
+  if(p.file){el.innerHTML=`<img src="${p.file}" style="object-position:${p.focus||'50% 50%'}">`+(p.credit?`<div class="credit">${p.credit}</div>`:'')+(p.status==='unverified-preview'?`<div class="wm">UNVERIFIED · PREVIEW ONLY</div>`:'')}
   else el.innerHTML=`<div class="ph"><svg width="120" height="96" viewBox="0 0 120 96"><rect x="6" y="18" width="108" height="72" rx="10" fill="none" stroke="#e8dfcf" stroke-width="6"/><circle cx="60" cy="54" r="20" fill="none" stroke="#e8dfcf" stroke-width="6"/><rect x="38" y="6" width="44" height="16" rx="4" fill="#e8dfcf"/></svg><b style="margin-top:22px">PHOTO SLOT</b><i>Image pending: source, licence and subject not yet verified</i></div>`;
   el.insertAdjacentHTML('beforeend',`<div class="lab"><span>${p.label}</span><small>${p.note}</small></div>`);}
 initSlot('slotKalsi','kalsi');initSlot('slotDhauli','dhauli');initSlot('slotPillar','pillar');initSlot('slotSarnath','sarnath');

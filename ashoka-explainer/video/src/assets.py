@@ -82,6 +82,8 @@ def resolve_slots(m, page_dir, preview_unverified=False):
     for key, s in m["slots"].items():
         state, reason = slot_state(s)
         p = {"label": s["on_frame_label"], "note": s["on_frame_note"], "credit": "", "state": state, "reason": reason}
+        if s.get("focus"):
+            p["focus"] = s["focus"]  # CSS object-position for the crop
         use = state == "ready" or (state == "unverified" and preview_unverified)
         if use:
             sel = s["selected"]

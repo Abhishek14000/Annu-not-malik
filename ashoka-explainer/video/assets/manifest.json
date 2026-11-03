@@ -113,8 +113,33 @@
         }
       ],
       "candidates": [],
-      "selected": null,
-      "download_status": "failed: no provider reachable (placeholder kept)",
+      "selected": {
+        "origin": "manual",
+        "file": "assets/manual/kalsi.jpg",
+        "sha256": "7d5f0784fef33b49a6a25efdc05d75cf34e2e8ef2db2ce44d64f1ce109f63e1c",
+        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "image_url": "",
+        "title": "Inscribed boulder in shelter (owner-supplied photo 3)",
+        "creator": "",
+        "attribution": "",
+        "licence": {
+          "status": "reported-unverified",
+          "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
+          "reported_by": "project owner in chat, 2026-11-03"
+        },
+        "authenticity": {
+          "verified": true,
+          "verified_by": "Project owner (in chat, 2026-11-03)",
+          "verified_on": "2026-11-03T08:03:28+00:00",
+          "notes": "Owner identified the supplied photos as: Sarnath lion capital, Dhauli edict, Kalsi edict, Delhi-Topra pillar. Matches Claude's visual check of each photo."
+        },
+        "selected_on": "2026-11-03T07:58:28+00:00",
+        "low_resolution": true,
+        "probable_source": {
+          "status": "not identified: no matching Commons file found by web search; 500x375 px suggests a thumbnail"
+        }
+      },
+      "download_status": "selected_unverified",
       "last_retrieval": "2026-11-03T07:45:58+00:00"
     },
     "dhauli": {
@@ -147,8 +172,39 @@
         }
       ],
       "candidates": [],
-      "selected": null,
-      "download_status": "failed: no provider reachable (placeholder kept)",
+      "selected": {
+        "origin": "manual",
+        "file": "assets/manual/dhauli.jpg",
+        "sha256": "9875ac52abe1edcf6992ee32222b5b9ed1f858f67a06c5c7c7ae7dc206b73e15",
+        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "image_url": "",
+        "title": "Inscribed rock face, close-up (owner-supplied photo 2)",
+        "creator": "",
+        "attribution": "",
+        "licence": {
+          "status": "reported-unverified",
+          "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
+          "reported_by": "project owner in chat, 2026-11-03",
+          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Bhajish Bharathan, which requires attribution and share-alike; that conflicts with 'public domain'."
+        },
+        "authenticity": {
+          "verified": true,
+          "verified_by": "Project owner (in chat, 2026-11-03)",
+          "verified_on": "2026-11-03T08:03:28+00:00",
+          "notes": "Owner identified the supplied photos as: Sarnath lion capital, Dhauli edict, Kalsi edict, Delhi-Topra pillar. Matches Claude's visual check of each photo."
+        },
+        "selected_on": "2026-11-03T07:58:28+00:00",
+        "low_resolution": false,
+        "probable_source": {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_edicts_of_Ashoka_at_Dhauli.jpg",
+          "author": "Bhajish Bharathan",
+          "licence": "CC BY-SA 4.0",
+          "note": "Supplied file EXIF: Nikon D3200, edited in Lightroom 2017-04-09; Commons page dates the photo 2017-03-25.",
+          "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
+          "licence_per_search_snippet": "CC BY-SA 4.0"
+        }
+      },
+      "download_status": "selected_unverified",
       "last_retrieval": "2026-11-03T07:45:58+00:00"
     },
     "pillar": {
@@ -181,9 +237,41 @@
         }
       ],
       "candidates": [],
-      "selected": null,
-      "download_status": "failed: no provider reachable (placeholder kept)",
-      "last_retrieval": "2026-11-03T07:45:58+00:00"
+      "selected": {
+        "origin": "manual",
+        "file": "assets/manual/pillar.jpg",
+        "sha256": "4f5ef5f98f8c5c5a70d3d66dd370eec509465eae7591cdb0d1a6e4f964600e42",
+        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "image_url": "",
+        "title": "Pillar on ruined structure (owner-supplied photo 4)",
+        "creator": "",
+        "attribution": "",
+        "licence": {
+          "status": "reported-unverified",
+          "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
+          "reported_by": "project owner in chat, 2026-11-03",
+          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by IshiSenpai, which requires attribution and share-alike; that conflicts with 'public domain'."
+        },
+        "authenticity": {
+          "verified": true,
+          "verified_by": "Project owner (in chat, 2026-11-03)",
+          "verified_on": "2026-11-03T08:03:28+00:00",
+          "notes": "Owner identified the supplied photos as: Sarnath lion capital, Dhauli edict, Kalsi edict, Delhi-Topra pillar. Matches Claude's visual check of each photo."
+        },
+        "selected_on": "2026-11-03T07:58:28+00:00",
+        "low_resolution": false,
+        "probable_source": {
+          "url": "https://commons.wikimedia.org/wiki/File:Ashoka_Pillar_at_Feroz_Shah_Kotla_-_Wide_View.jpg",
+          "author": "IshiSenpai",
+          "licence": "CC BY-SA 4.0",
+          "note": "Supplied file is 1280x808, consistent with a Commons 1280px rendition.",
+          "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
+          "licence_per_search_snippet": "CC BY-SA 4.0"
+        }
+      },
+      "download_status": "selected_unverified",
+      "last_retrieval": "2026-11-03T07:45:58+00:00",
+      "focus": "50% 12%"
     },
     "sarnath": {
       "intended_subject": "The Lion Capital of Ashoka from Sarnath, in the Sarnath Archaeological Museum.",
@@ -215,9 +303,41 @@
         }
       ],
       "candidates": [],
-      "selected": null,
-      "download_status": "failed: no provider reachable (placeholder kept)",
-      "last_retrieval": "2026-11-03T07:45:58+00:00"
+      "selected": {
+        "origin": "manual",
+        "file": "assets/manual/sarnath.jpg",
+        "sha256": "e428888049375546ae5513bef8848361ca5078821208ba5b8bd6177d2ea79d22",
+        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "image_url": "",
+        "title": "Lion Capital (owner-supplied photo 1)",
+        "creator": "",
+        "attribution": "",
+        "licence": {
+          "status": "reported-unverified",
+          "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
+          "reported_by": "project owner in chat, 2026-11-03",
+          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Chrisi1964, which requires attribution and share-alike; that conflicts with 'public domain'."
+        },
+        "authenticity": {
+          "verified": true,
+          "verified_by": "Project owner (in chat, 2026-11-03)",
+          "verified_on": "2026-11-03T08:03:28+00:00",
+          "notes": "Owner identified the supplied photos as: Sarnath lion capital, Dhauli edict, Kalsi edict, Delhi-Topra pillar. Matches Claude's visual check of each photo."
+        },
+        "selected_on": "2026-11-03T07:58:28+00:00",
+        "low_resolution": false,
+        "probable_source": {
+          "url": "https://commons.wikimedia.org/wiki/File:Sarnath_capital.jpg",
+          "author": "Chrisi1964",
+          "licence": "CC BY-SA 4.0",
+          "note": "Supplied file is 1280x2285, consistent with a Commons 1280px rendition.",
+          "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
+          "licence_per_search_snippet": "CC BY-SA 4.0"
+        }
+      },
+      "download_status": "selected_unverified",
+      "last_retrieval": "2026-11-03T07:45:58+00:00",
+      "focus": "50% 4%"
     }
   },
   "scenes": [

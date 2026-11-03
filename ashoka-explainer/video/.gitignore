@@ -3,3 +3,7 @@ build/
 .cache/
 __pycache__/
 build_full.log
+# Images whose licence isn't verified yet, and previews that contain them, stay out of git
+assets/manual/*.jpg
+assets/manual/*.jpg.json
+*_PREVIEW_UNVERIFIED*.mp4
