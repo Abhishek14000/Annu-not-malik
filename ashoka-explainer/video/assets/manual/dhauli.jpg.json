@@ -1,0 +1,38 @@
+{
+  "origin": "manual",
+  "file": "assets/manual/dhauli.jpg",
+  "sha256": "9875ac52abe1edcf6992ee32222b5b9ed1f858f67a06c5c7c7ae7dc206b73e15",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Rock_edicts_of_Ashoka_at_Dhauli.jpg",
+  "image_url": "",
+  "title": "Inscribed rock face, close-up (owner-supplied photo 2)",
+  "creator": "",
+  "attribution": "Photo: Bhajish Bharathan / Wikimedia Commons (cropped)",
+  "licence": {
+    "status": "owner-accepted",
+    "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
+    "reported_by": "project owner in chat, 2026-11-03",
+    "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Bhajish Bharathan, which requires attribution and share-alike; that conflicts with 'public domain'.",
+    "name": "CC BY-SA 4.0",
+    "accepted_by": "Project owner (in chat, 2026-11-03)",
+    "accepted_on": "2026-11-03T08:21:15+00:00",
+    "basis": "Owner says the photo is from Wikimedia and chose 'Use all 4'. File matches Commons 'Rock edicts of Ashoka at Dhauli.jpg' (6016x4000, 2.77 MB); that page states CC BY-SA 4.0 per a web-search summary (page not opened from this session).",
+    "note": "Publication decision by the project owner. This is not an independent licence verification."
+  },
+  "authenticity": {
+    "verified": true,
+    "verified_by": "Project owner (in chat, 2026-11-03)",
+    "verified_on": "2026-11-03T08:03:28+00:00",
+    "notes": "Owner identified the supplied photos as: Sarnath lion capital, Dhauli edict, Kalsi edict, Delhi-Topra pillar. Matches Claude's visual check of each photo."
+  },
+  "selected_on": "2026-11-03T07:58:28+00:00",
+  "low_resolution": false,
+  "probable_source": {
+    "url": "https://commons.wikimedia.org/wiki/File:Rock_edicts_of_Ashoka_at_Dhauli.jpg",
+    "author": "Bhajish Bharathan",
+    "licence": "CC BY-SA 4.0",
+    "note": "Supplied file EXIF: Nikon D3200, edited in Lightroom 2017-04-09; Commons page dates the photo 2017-03-25.",
+    "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
+    "licence_per_search_snippet": "CC BY-SA 4.0"
+  },
+  "source_match": "Supplied file matches the Commons original exactly by pixel size (6016x4000) and file size (2.77 MB), per a web-search summary of the file page."
+}

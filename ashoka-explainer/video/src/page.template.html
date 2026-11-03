@@ -37,7 +37,9 @@ body{font-family:Inter,sans-serif;color:var(--ink);position:relative}
 .slot .lab span{background:var(--ink);color:#fff;font:700 28px Inter;padding:8px 14px;border-radius:6px}
 .slot .lab small{background:var(--yellow);color:var(--ink);font:600 23px Inter;padding:6px 12px;border-radius:6px}
 .slot .wm{position:absolute;left:0;right:0;top:42%;text-align:center;font:900 54px Inter;color:#fff;background:rgba(196,55,43,.82);padding:14px 0;letter-spacing:3px}
-.slot .credit{position:absolute;right:12px;top:10px;font:500 18px Inter;color:#fff;background:rgba(0,0,0,.55);padding:4px 8px;border-radius:4px;max-width:90%}
+.pcredit{position:absolute;text-align:right;font:500 19px Inter;color:#cfc6b6;mix-blend-mode:normal}
+#sEv .pcredit{color:#6b6152}
+.slot .credit{position:absolute;right:12px;bottom:12px;text-align:right;max-width:44%;line-height:1.3;font:500 18px Inter;color:#fff;background:rgba(0,0,0,.55);padding:4px 8px;border-radius:4px;max-width:90%}
 /* captions */
 #cap{position:absolute;left:50%;bottom:440px;transform:translateX(-50%);max-width:940px;text-align:center}
 #cap span{display:inline;background:var(--ink);color:#fff;font:800 54px/1.38 Inter;padding:6px 18px;border-radius:10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
@@ -45,6 +47,10 @@ body{font-family:Inter,sans-serif;color:var(--ink);position:relative}
 .ev{position:absolute;width:478px;padding:22px 24px;border-radius:14px;border:3px solid var(--ink);background:#fffaf0;box-shadow:6px 6px 0 var(--ink)}
 .ev p{font:700 33px/1.18 Inter}
 .ev em{display:block;font:600 22px Inter;font-style:normal;color:#6b6152;margin-top:10px;letter-spacing:1px;text-transform:uppercase}
+.scard{left:70px;width:940px;padding:22px 30px 24px 38px;background:#fffaf0;border:3px solid var(--ink);border-left:16px solid var(--ochre);border-radius:14px;box-shadow:6px 6px 0 var(--ink)}
+.scard .sname{font-family:Playfair;font-weight:900;font-size:54px;line-height:1.05}
+.scard .sbook{font:500 24px Inter;color:#6b6152;margin-top:6px}
+.scard .spos{font:700 34px/1.2 Inter;margin-top:10px}
 .colh{position:absolute;width:478px;text-align:center;font-family:Playfair;font-weight:900;font-size:76px;color:#fff;border-radius:14px;padding:10px 0 16px}
 </style></head>
 <body>
@@ -171,6 +177,21 @@ body{font-family:Inter,sans-serif;color:var(--ink);position:relative}
   <div class="abs card" style="left:70px;top:210px;width:940px;padding:26px 36px"><div class="h1" style="font-size:78px">Remorse → <span class="hl" id="govHl" style="--w:0%">a way to govern</span></div></div>
 </div>
 
+<!-- DEBATE (scholars: text-only cards, no photos of people) -->
+<div class="scene" id="sDeb">
+  <div class="abs" style="inset:0;background:var(--paper)"></div>
+  <div class="abs" id="dHead" style="left:70px;top:150px;right:70px;opacity:0"><div class="tag" style="color:var(--red)">The scholarly debate</div><div class="h1" style="font-size:88px;margin-top:8px">What historians argue</div></div>
+  <div class="abs scard" id="d1" style="top:400px;opacity:0"><div class="sname">Romila Thapar</div><div class="sbook"><i>Aśoka and the Decline of the Mauryas</i> (1961)</div><div class="spos">Dhamma as a public ethic to hold a diverse empire together</div></div>
+  <div class="abs scard" id="d2" style="top:640px;opacity:0"><div class="sname">Upinder Singh</div><div class="sbook"><i>Political Violence in Ancient India</i> (2017)</div><div class="spos">Gave up conquest, kept the state’s power to punish</div></div>
+  <div class="abs scard" id="d3" style="top:880px;opacity:0"><div class="sname">Patrick Olivelle</div><div class="sbook"><i>Ashoka: Portrait of a Philosopher King</i> (2023)</div><div class="spos">A philosopher-king working out his ideas in public</div></div>
+  <div class="abs card" id="dTw" style="left:70px;top:520px;width:940px;padding:30px 36px;opacity:0">
+    <div class="tag" style="color:var(--red)">One twist</div>
+    <div class="h1" style="font-size:66px;margin-top:10px">Buddhist legends about Ashoka never mention the <span class="hl" id="twHl" style="--w:0%">Kalinga war</span></div>
+    <div class="src" style="margin-top:14px">e.g. the <i>Aśokāvadāna</i> and the Sri Lankan chronicles (<i>Dīpavaṃsa</i>, <i>Mahāvaṃsa</i>)</div>
+  </div>
+  <div class="abs stamp" id="dSt" style="left:90px;top:960px;font-size:54px;line-height:1.1;transform:rotate(-3deg);opacity:0;background:rgba(239,231,214,.95)">Only source:<br>his own inscriptions</div>
+</div>
+
 <!-- CLOSE words -->
 <div class="scene" id="sCl">
   <div class="abs" style="inset:0;background:var(--paper)"></div>
@@ -201,7 +222,7 @@ const T={
  setup:B('setup').start, num:B('numbers').start, rem:S('numbers',1).start-0.15,
  turn:B('turn').start, dhauli:S('turn',3).start-0.15, q:S('turn',4).start-0.15,
  ev:B('evidence').start, th:B('thesis').start, thMap:S('thesis',2).start+0.4, sar:S('thesis',3).start-0.15,
- cl:B('close').start, clStone:S('close',2).start-0.15, end:D
+ deb:B('debate').start, cl:B('close').start, clStone:S('close',2).start-0.15, end:D
 };
 function vis(id,a,b,fi=.35,fo=.35){const t=window.__t;let o=0;if(t>=a-fi&&t<=b+fo)o=Math.min(prog(t,a-fi,fi)||(t>=a?1:0),1-prog(t,b,fo));$(id).style.opacity=clamp(o);return clamp(o)}
 function fadeIn(el,a,d=.35,dy=30){const p=eo(prog(window.__t,a,d));el.style.opacity=p;el.style.transform=`translateY(${(1-p)*dy}px)`;return p}
@@ -209,11 +230,11 @@ function pop(el,a,d=.4,rot=0){const p=prog(window.__t,a,d);el.style.opacity=clam
 function hl(el,a,d=.45){el.style.setProperty('--w',(eo(prog(window.__t,a,d))*100)+'%')}
 // ---- photo slots ----
 function initSlot(id,key){const el=$(id),p=PHOTOS[key];
-  if(p.file){el.innerHTML=`<img src="${p.file}" style="object-position:${p.focus||'50% 50%'}">`+(p.credit?`<div class="credit">${p.credit}</div>`:'')+(p.status==='unverified-preview'?`<div class="wm">UNVERIFIED · PREVIEW ONLY</div>`:'')}
+  if(p.file){el.innerHTML=`<img src="${p.file}" style="object-position:${p.focus||'50% 50%'}">`;if(p.credit)el.insertAdjacentHTML('afterend',`<div class="pcredit" style="left:${el.offsetLeft}px;top:${el.offsetTop+el.offsetHeight+6}px;width:${el.offsetWidth}px">${p.credit}</div>`);el.innerHTML+=''+(p.status==='unverified-preview'?`<div class="wm">UNVERIFIED · PREVIEW ONLY</div>`:'')}
   else el.innerHTML=`<div class="ph"><svg width="120" height="96" viewBox="0 0 120 96"><rect x="6" y="18" width="108" height="72" rx="10" fill="none" stroke="#e8dfcf" stroke-width="6"/><circle cx="60" cy="54" r="20" fill="none" stroke="#e8dfcf" stroke-width="6"/><rect x="38" y="6" width="44" height="16" rx="4" fill="#e8dfcf"/></svg><b style="margin-top:22px">PHOTO SLOT</b><i>Image pending: source, licence and subject not yet verified</i></div>`;
   el.insertAdjacentHTML('beforeend',`<div class="lab"><span>${p.label}</span><small>${p.note}</small></div>`);}
 initSlot('slotKalsi','kalsi');initSlot('slotDhauli','dhauli');initSlot('slotPillar','pillar');initSlot('slotSarnath','sarnath');
-if(PHOTOS.kalsi.file) $('stonePhoto').innerHTML=`<img id="stoneImg" src="${PHOTOS.kalsi.file}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55">`+(PHOTOS.kalsi.status==='unverified-preview'?`<div style="position:absolute;left:0;right:0;top:1240px;text-align:center;font:900 44px Inter;color:#fff;background:rgba(196,55,43,.82);padding:10px 0">UNVERIFIED · PREVIEW ONLY</div>`:'');
+if(PHOTOS.kalsi.file) $('stonePhoto').innerHTML=`<img id="stoneImg" src="${PHOTOS.kalsi.file}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55">`+(PHOTOS.kalsi.credit?`<div class="pcredit" style="left:40px;right:40px;top:1500px;z-index:5">Background: ${PHOTOS.kalsi.credit}</div>`:'')+(PHOTOS.kalsi.status==='unverified-preview'?`<div style="position:absolute;left:0;right:0;top:1240px;text-align:center;font:900 44px Inter;color:#fff;background:rgba(196,55,43,.82);padding:10px 0">UNVERIFIED · PREVIEW ONLY</div>`:'');
 function kb(id,a,b){const img=$(id)?.querySelector('img');if(img){const p=prog(window.__t,a,b-a);img.style.transform=`scale(${1.04+p*.08})`}}
 // ---- map ----
 $('land').setAttribute('d',MAP.land);$('landClipPath').setAttribute('d',MAP.land);
@@ -259,7 +280,8 @@ window.render=function(t){
  show('sQ', t>=T.q&&t<T.ev+.35? Math.min(xf(T.q,.25),1-xf(T.ev)):0);
  show('sEv', t>=T.ev&&t<T.th+.35? Math.min(xf(T.ev),1-xf(T.th)):0);
  show('sTh', t>=T.th&&t<T.thMap+.35? Math.min(xf(T.th),1-xf(T.thMap)):0);
- show('sSar', t>=T.sar&&t<T.cl+.35? Math.min(xf(T.sar),1-xf(T.cl)):0);
+ show('sSar', t>=T.sar&&t<T.deb+.35? Math.min(xf(T.sar),1-xf(T.deb)):0);
+ show('sDeb', t>=T.deb&&t<T.cl+.35? Math.min(xf(T.deb),1-xf(T.cl)):0);
  show('sCl', t>=T.cl&&t<T.clStone+.35? Math.min(xf(T.cl),1-xf(T.clStone)):0);
 
  // ---- STONE ----
@@ -338,7 +360,13 @@ window.render=function(t){
  const fp=prog(t,W('thesis','policy')-.25,.4); $('wPol').style.opacity=eo(fp); $('arr').style.opacity=eo(fp);
  $('wFeel').style.transform=`translateY(${(1-eo(fp))*170}px)`;
  // ---- SARNATH ----
- kb('slotSarnath',T.sar,T.cl); hl($('govHl'),W('thesis','govern')-.3);
+ kb('slotSarnath',T.sar,T.deb); hl($('govHl'),W('thesis','govern')-.3);
+ // ---- DEBATE ----
+ fadeIn($('dHead'),T.deb+0.05);
+ const twA=S('debate',4).start-0.1;
+ [['d1',1],['d2',2],['d3',3]].forEach(([id,i])=>{fadeIn($(id),S('debate',i).start-0.05,.4,40); const o=+$(id).style.opacity; $(id).style.opacity=o*(1-0.8*eo(prog(t,twA,.4)))});
+ fadeIn($('dTw'),twA,.45,40); hl($('twHl'),W('debate','Kalinga war'));
+ pop($('dSt'),S('debate',5).start,.35,-3);
  // ---- CLOSE words ----
  const ca=eo(prog(t,T.cl+0.05,.4)), cb=eo(prog(t,W('close','strategy'),.4));
  $('clA').style.opacity=ca; $('clA').style.transform=`translateX(${(1-ca)*-200}px)`;
@@ -359,6 +387,7 @@ sfx(S('turn',1).end-.35,'thud');
 sfx(T.q,'whoosh');sfx(W('turn','or a king'),'whoosh');
 ['he urges people','and wells','keeps the death','and warns forest'].forEach(k=>sfx(W('evidence',k),'tick'));sfx(S('evidence',1).start,'tick');
 sfx(T.thMap,'whoosh');
+[1,2,3].forEach(i=>sfx(S('debate',i).start,'tick'));sfx(S('debate',4).start-0.1,'thud');sfx(S('debate',5).start,'stamp');
 sfx(T.clStone+0.1,'chisel');sfx(T.clStone+0.9,'chisel');
 window.T=T;
 </script></body></html>

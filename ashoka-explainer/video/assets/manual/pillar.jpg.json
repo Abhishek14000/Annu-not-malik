@@ -1,0 +1,37 @@
+{
+  "origin": "manual",
+  "file": "assets/manual/pillar.jpg",
+  "sha256": "4f5ef5f98f8c5c5a70d3d66dd370eec509465eae7591cdb0d1a6e4f964600e42",
+  "source_url": "Wikimedia Commons (stated by the project owner); exact file page not identified",
+  "image_url": "",
+  "title": "Pillar on ruined structure (owner-supplied photo 4)",
+  "creator": "",
+  "attribution": "Photo: Wikimedia Commons (author unconfirmed)",
+  "licence": {
+    "status": "owner-accepted",
+    "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
+    "reported_by": "project owner in chat, 2026-11-03",
+    "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by IshiSenpai, which requires attribution and share-alike; that conflicts with 'public domain'.",
+    "name": "licence unconfirmed",
+    "accepted_by": "Project owner (in chat, 2026-11-03)",
+    "accepted_on": "2026-11-03T08:21:15+00:00",
+    "basis": "Owner says the photo is from Wikimedia and chose 'Use all 4' knowing the author and licence are unconfirmed.",
+    "note": "Publication decision by the project owner. This is not an independent licence verification."
+  },
+  "authenticity": {
+    "verified": true,
+    "verified_by": "Project owner (in chat, 2026-11-03)",
+    "verified_on": "2026-11-03T08:03:28+00:00",
+    "notes": "Owner identified the supplied photos as: Sarnath lion capital, Dhauli edict, Kalsi edict, Delhi-Topra pillar. Matches Claude's visual check of each photo."
+  },
+  "selected_on": "2026-11-03T07:58:28+00:00",
+  "low_resolution": false,
+  "probable_source": {
+    "url": "https://commons.wikimedia.org/wiki/File:Ashoka_Pillar_at_Feroz_Shah_Kotla_-_Wide_View.jpg",
+    "author": "IshiSenpai",
+    "licence": "CC BY-SA 4.0",
+    "note": "Supplied file is 1280x808, consistent with a Commons 1280px rendition.",
+    "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
+    "licence_per_search_snippet": "CC BY-SA 4.0"
+  }
+}

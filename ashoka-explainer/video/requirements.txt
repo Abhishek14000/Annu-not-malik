@@ -3,6 +3,7 @@ numpy>=2.0
 soundfile>=0.12
 requests>=2.31
 Pillow>=10.0
-# Voice regeneration only (run_pipeline.py --regen-voice). Tested with 1.8.0.
-piper-tts==1.8.0
+# Voice regeneration only (run_pipeline.py --regen-voice).
+kokoro-onnx==0.6.1     # default engine (Kokoro-82M, Apache-2.0 weights)
+piper-tts==1.8.0       # optional: --engine piper
 # Also needed: ffmpeg/ffprobe on PATH, Node 18+ with the `playwright` package and its Chromium (tested 1.63.0).

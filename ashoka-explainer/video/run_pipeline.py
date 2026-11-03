@@ -17,6 +17,9 @@ VIDEO = os.path.dirname(os.path.abspath(__file__))
 SRC, GEN, BUILD = (os.path.join(VIDEO, d) for d in ("src", "generated", "build"))
 VOICE_URL = "https://github.com/rhasspy/piper/releases/download/v0.0.2/voice-en-us-libritts-high.tar.gz"
 VOICE_DIR = os.path.join(VIDEO, ".cache", "voices", "en-us-libritts-high")
+KOKORO_URL = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/"
+KOKORO_DIR = os.path.join(VIDEO, ".cache", "voices", "kokoro")
+KOKORO_FILES = ("kokoro-v1.0.onnx", "voices-v1.0.bin")
 REPORT = {"started": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "stages": [], "errors": [], "warnings": []}
 
 
@@ -84,19 +87,45 @@ def voice(a):
         shutil.copyfile(os.path.join(GEN, "vo.wav"), os.path.join(BUILD, "vo", "vo.wav"))
         shutil.copyfile(os.path.join(GEN, "timeline.json"), os.path.join(BUILD, "timeline.json"))
         return "reused generated/vo.wav and generated/timeline.json"
-    model = os.environ.get("PIPER_MODEL") or os.path.join(VOICE_DIR, "en-us-libritts-high.onnx")
-    if not os.path.exists(model):
-        if not a.fetch_voice:
-            raise StageError(f"voice model missing ({model}); rerun with --fetch-voice or set PIPER_MODEL")
-        fetch_voice()
+    env = {"TTS_ENGINE": a.engine}
+    if a.engine == "kokoro":
+        if any(not os.path.exists(os.path.join(KOKORO_DIR, f)) for f in KOKORO_FILES):
+            if not a.fetch_voice:
+                raise StageError(f"Kokoro model files missing in {KOKORO_DIR}; rerun with --fetch-voice")
+            fetch_kokoro()
+        mod = "kokoro_onnx"; env.update(KOKORO_DIR=KOKORO_DIR, KOKORO_VOICE=a.voice)
+    else:
+        model = os.environ.get("PIPER_MODEL") or os.path.join(VOICE_DIR, "en-us-libritts-high.onnx")
+        if not os.path.exists(model):
+            if not a.fetch_voice:
+                raise StageError(f"voice model missing ({model}); rerun with --fetch-voice or set PIPER_MODEL")
+            fetch_voice()
+        mod = "piper"; env["PIPER_MODEL"] = model
     try:
-        import piper  # noqa: F401
+        __import__(mod)
     except ImportError:
-        raise StageError("piper-tts not installed (pip install -r requirements.txt)")
-    out = run([sys.executable, os.path.join(SRC, "build_vo.py"), str(a.speaker)], env={"PIPER_MODEL": model})
+        raise StageError(f"{mod} not installed (pip install -r requirements.txt)")
+    out = run([sys.executable, os.path.join(SRC, "build_vo.py"), str(a.speaker)], env=env)
     shutil.copyfile(os.path.join(BUILD, "vo", "vo.wav"), os.path.join(GEN, "vo.wav"))
     shutil.copyfile(os.path.join(BUILD, "timeline.json"), os.path.join(GEN, "timeline.json"))
     return "regenerated voiceover:\n" + out
+
+
+def _download(url, dst):
+    for i in range(4):
+        try:
+            urllib.request.urlretrieve(url, dst)
+            return
+        except Exception as e:
+            if i == 3:
+                raise StageError(f"download failed ({url}): {e}")
+            time.sleep(2 ** (i + 1))
+
+
+def fetch_kokoro():
+    os.makedirs(KOKORO_DIR, exist_ok=True)
+    for f in KOKORO_FILES:
+        _download(KOKORO_URL + f, os.path.join(KOKORO_DIR, f))
 
 
 def fetch_voice():
@@ -215,7 +244,9 @@ def main():
     ap.add_argument("--providers", help="comma list for retrieval: openverse,internet_archive,loc")
     ap.add_argument("--preview-unverified", action="store_true", help="show selected-but-unverified images, watermarked")
     ap.add_argument("--regen-voice", action="store_true"); ap.add_argument("--fetch-voice", action="store_true")
-    ap.add_argument("--speaker", type=int, default=414)
+    ap.add_argument("--engine", choices=["kokoro", "piper"], default="kokoro", help="voice engine for --regen-voice")
+    ap.add_argument("--voice", default="af_heart", help="Kokoro voice id (e.g. af_heart, am_michael, bm_george)")
+    ap.add_argument("--speaker", type=int, default=414, help="Piper speaker id")
     ap.add_argument("--regen-map", action="store_true")
     ap.add_argument("--install", action="store_true", help="npm install if node_modules is incomplete")
     ap.add_argument("--fps", type=int, default=30)

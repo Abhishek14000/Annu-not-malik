@@ -1,11 +1,11 @@
 # Video pipeline: "The King Who Apologized in Stone"
 
-The deliverable is `ashoka_explainer.mp4`: 1080×1920 (9:16), 30 fps, about 1:31, H.264 with AAC audio, normalised to −14 LUFS. Captions are burned in and stay above the bottom 20% of the frame.
+The deliverable is `ashoka_explainer.mp4`: 1080×1920 (9:16), 30 fps, 2:00 (with a 30-second scholarly-debate section), H.264 with AAC audio, normalised to −14 LUFS. Captions are burned in and stay above the bottom 20% of the frame.
 
 ## Quick start
 ```bash
 cd ashoka-explainer/video
-pip install -r requirements.txt   # piper-tts is only needed for --regen-voice
+pip install -r requirements.txt   # kokoro-onnx / piper-tts are only needed for --regen-voice
 npm install                       # fonts and map data (versions pinned in package.json)
 python3 run_pipeline.py           # full render; missing photos render as placeholders
 ```
@@ -15,7 +15,7 @@ python3 run_pipeline.py           # full render; missing photos render as placeh
 | `--retrieve` | Runs the optional image search first (see below). |
 | `--preview-unverified` | Also shows images that are selected but not yet verified, with an "UNVERIFIED · PREVIEW ONLY" watermark. The output is named `ashoka_explainer_PREVIEW_UNVERIFIED.mp4`. |
 | `--seconds N` | Quick test render of the first N seconds, written to `build/` only. |
-| `--regen-voice [--fetch-voice]` | Rebuilds the voiceover and timeline (needs piper-tts and the voice model). |
+| `--regen-voice [--fetch-voice]` | Rebuilds the voiceover and timeline. Default engine is Kokoro (`--engine kokoro --voice af_heart`); `--engine piper` restores the original voice. `--fetch-voice` downloads the model files from GitHub. |
 | `--regen-map` | Rebuilds the map geometry. |
 | `--install` | Runs `npm install` when `node_modules` is incomplete. |
 
@@ -52,12 +52,15 @@ There are four slots: `kalsi`, `dhauli`, `pillar` and `sarnath` (see `ASSET_MANI
 2. its licence status is `verified`, meaning a named person checked it on the source page;
 3. its subject is verified, meaning a named person confirmed it really shows, say, the Kalsi edict.
 
+Instead of 2, the project owner can record a decision to publish without independent licence verification: `src/assets.py owner-accept SLOT --by ... --basis ... --attribution ... --licence-label ...`. That sets the licence status to `owner-accepted`, which is reported as such and never shown as `verified`. All four current photos are owner-accepted; see `ASSET_MANIFEST.md`.
+
 Otherwise the slot renders as a labelled placeholder. No script can set either verification flag by itself.
 
 Licence status values:
 - `unknown`: no licence information was found.
 - `reported-unverified`: a provider or the file states a licence, but nobody has checked it.
 - `verified`: a person checked it, recorded with their name, the date and how they checked.
+- `owner-accepted`: the project owner chose to publish without independent verification, recorded with their name, the date and their stated basis.
 
 ### Adding an image you got elsewhere (e.g. Wikimedia Commons on another network)
 ```bash
@@ -86,7 +89,8 @@ How retrieval behaves:
 - Full request logs go to `build/retrieval_report.json`, and a summary of each run is appended to `assets/retrieved/retrieval_log.jsonl`.
 
 ## Credits and licences (see `ASSET_MANIFEST.md`)
-- **Voice:** Piper `en-us-libritts-high`, speaker 414. The voice's model card states **CC BY 4.0** (trained on LibriTTS). That hasn't been checked against the upstream dataset's licence page. If you keep this voice, credit it.
+- **Photos:** Wikimedia Commons, credited on screen under each photo. Dhauli (Bhajish Bharathan) and Sarnath (Chrisi1964) are CC BY-SA 4.0 per their Commons pages as summarised by web search; the files match by size or proportions. The pillar and Kalsi photos' authors and licences are unconfirmed. All four were published on the owner's decision (`owner-accepted`). CC BY-SA may require the video itself to be shared under CC BY-SA if it counts as an adaptation.
+- **Voice:** Kokoro-82M v1.0 (`af_heart`, speed 0.95) via kokoro-onnx. Its weights are Apache-2.0, per the hexgrad/kokoro and kokoro-onnx READMEs (read on GitHub), so no on-screen credit is required. Every sentence was transcribed with Whisper base.en as an intelligibility check; all were intelligible. The earlier Piper voice (model card: CC BY 4.0) is still available with `--engine piper`.
 - **Map:** Natural Earth land data via the `world-atlas` package (the package licence is ISC). Natural Earth describes its data as public domain, which hasn't been checked here. The empire borders are hand-drawn approximations.
 - **Fonts:** Playfair Display, Inter and Noto Sans Brahmi from @fontsource. Their package metadata says OFL-1.1.
 - **Quote:** S. Dhammika, *The Edicts of King Asoka*, credited on screen.

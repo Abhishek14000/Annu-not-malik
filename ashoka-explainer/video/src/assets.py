@@ -13,6 +13,7 @@ Commands:
   add-manual SLOT FILE ...       copy an image you obtained yourself into assets/manual/
   verify-licence SLOT ...        record that a person checked the licence at the source
   verify-subject SLOT ...        record that a person checked the image shows the subject
+  owner-accept SLOT ...          record the owner's decision to publish without independent licence verification
   clear SLOT                     drop the selection; the slot goes back to a placeholder
 """
 import argparse, csv, datetime, hashlib, json, os, shutil, sys
@@ -49,7 +50,7 @@ def sha256(path):
 
 # ---------------------------------------------------------------- render gate
 def slot_state(slot):
-    """Return (state, reason). States: placeholder, unverified, ready."""
+    """Return (state, reason). States: placeholder, unverified, ready (licence verified or owner-accepted, and subject verified)."""
     sel = slot.get("selected")
     if not sel:
         n = sum(1 for c in slot.get("candidates", []) if c.get("download_status") == "downloaded")
@@ -60,18 +61,21 @@ def slot_state(slot):
     if sel.get("sha256") and sha256(f) != sel["sha256"]:
         return "placeholder", "selected file changed since selection (sha256 mismatch)"
     missing = []
-    if (sel.get("licence") or {}).get("status") != "verified":
+    lic_status = (sel.get("licence") or {}).get("status")
+    if lic_status not in ("verified", "owner-accepted"):
         missing.append("licence not verified")
     if not (sel.get("authenticity") or {}).get("verified"):
         missing.append("subject not verified")
     if missing:
         return "unverified", "; ".join(missing)
+    if lic_status == "owner-accepted":
+        return "ready", "subject verified; licence accepted by the project owner, NOT independently verified"
     return "ready", "licence and subject verified"
 
 
 def credit_line(sel):
     lic = sel.get("licence") or {}
-    name = lic.get("name") if lic.get("status") == "verified" else (f'{lic["reported_name"]} (reported, unverified)' if lic.get("reported_name") else "licence unverified")
+    name = lic.get("name") if lic.get("status") in ("verified", "owner-accepted") else (f'{lic["reported_name"]} (reported, unverified)' if lic.get("reported_name") else "licence unverified")
     parts = [p for p in [sel.get("attribution") or "", name] if p]
     return " · ".join(parts)
 
@@ -89,7 +93,8 @@ def resolve_slots(m, page_dir, preview_unverified=False):
             sel = s["selected"]
             p["file"] = os.path.relpath(os.path.join(VIDEO, sel["file"]), page_dir)
             p["credit"] = credit_line(sel)
-            p["status"] = "verified" if state == "ready" else "unverified-preview"
+            owner = (sel.get("licence") or {}).get("status") == "owner-accepted"
+            p["status"] = ("owner-accepted" if owner else "verified") if state == "ready" else "unverified-preview"
         out[key] = p
     return out
 
@@ -229,10 +234,20 @@ def cmd_verify_subject(m, a):
     _refresh(m, a.slot)
 
 
+def cmd_owner_accept(m, a):
+    sel = m["slots"][a.slot].get("selected") or sys.exit("select an image first")
+    lic = sel.setdefault("licence", {"status": "unknown"})
+    lic.update(status="owner-accepted", name=a.licence_label, accepted_by=a.by, accepted_on=now(), basis=a.basis,
+               note="Publication decision by the project owner. This is not an independent licence verification.")
+    sel["attribution"] = a.attribution
+    _refresh(m, a.slot)
+
+
 def _refresh(m, slot):
     s = m["slots"][slot]
     st, _ = slot_state(s)
-    s["download_status"] = {"ready": "ready", "unverified": "selected_unverified", "placeholder": s.get("download_status")}[st]
+    owner = ((s.get("selected") or {}).get("licence") or {}).get("status") == "owner-accepted"
+    s["download_status"] = {"ready": "ready (owner-accepted licence)" if owner else "ready", "unverified": "selected_unverified", "placeholder": s.get("download_status")}[st]
 
 
 def main():
@@ -252,6 +267,10 @@ def main():
     p.add_argument("--by", required=True, help="name of the person who checked"); p.add_argument("--method", required=True, help="what was checked, e.g. 'Commons file page, licence section'")
     p = sub.add_parser("verify-subject"); p.add_argument("slot")
     p.add_argument("--by", required=True); p.add_argument("--notes", required=True, help="how the subject was confirmed")
+    p = sub.add_parser("owner-accept", help="record the project owner's decision to publish without independent licence verification")
+    p.add_argument("slot"); p.add_argument("--by", required=True); p.add_argument("--basis", required=True, help="what the owner stated / why")
+    p.add_argument("--attribution", required=True, help="exact credit line to print on frame")
+    p.add_argument("--licence-label", default="", help="licence text to print after the credit (may be empty)")
     p = sub.add_parser("clear"); p.add_argument("slot")
     a = ap.parse_args()
     m = load(a.manifest)
@@ -268,7 +287,7 @@ def main():
     if a.slot not in m["slots"]:
         sys.exit(f"unknown slot {a.slot!r}; slots: {', '.join(m['slots'])}")
     {"select": cmd_select, "add-manual": cmd_add_manual, "verify-licence": cmd_verify_licence,
-     "verify-subject": cmd_verify_subject, "clear": lambda m, a: m["slots"][a.slot].update(selected=None, download_status="not_attempted")}[a.cmd](m, a)
+     "verify-subject": cmd_verify_subject, "owner-accept": cmd_owner_accept, "clear": lambda m, a: m["slots"][a.slot].update(selected=None, download_status="not_attempted")}[a.cmd](m, a)
     save(m, a.manifest)
     st, why = slot_state(m["slots"][a.slot])
     print(f"{a.slot}: {st} ({why})")

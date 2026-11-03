@@ -21,3 +21,17 @@ Sources: Ashoka's edicts in the standard translations (Hultzsch, *Corpus Inscrip
 6. **"The first time a ruler let us read his emotions" became "a rare moment where a ruler lets us read his emotions."** "First" can't be defended. Earlier royal inscriptions and letters (Egyptian, Mesopotamian, Achaemenid) express royal feeling. What is genuinely rare is a ruler publicly regretting his own conquest.
 7. **"Apology" became "regret" / "He confessed."** In RE XIII Ashoka expresses remorse and sorrow, but he doesn't apologise *to* the Kalingans. The title "The King Who Apologized in Stone" is acceptable as a hook. The narration and the text card now say exactly what the edict says.
 8. **"Largest empire India had yet seen":** ✅ This is the standard view and is fine.
+
+## Scholarly debate section (added in the 2:00 cut)
+
+These are one-line paraphrases. Check them against the books before the video is used for teaching.
+
+| Claim on screen | Source | Confidence and notes |
+|---|---|---|
+| Romila Thapar reads Ashoka's *dhamma* as a public ethic meant to hold a vast, diverse empire together. | Romila Thapar, *Aśoka and the Decline of the Mauryas* (Oxford, 1961; rev. 1997) | High. This is Thapar's best-known argument: dhamma as Ashoka's own social ethic and a unifying policy, distinct from Buddhist doctrine. |
+| Upinder Singh notes that he gave up conquest but kept the state's power to punish. | Upinder Singh, *Political Violence in Ancient India* (Harvard, 2017) | Medium-high. Singh discusses the tension between Ashoka's non-violence and the state's coercive power. The edict evidence is solid either way: the forest-peoples warning is in RE XIII, and the death penalty is kept in PE IV. Check the wording against her chapter on Ashoka. |
+| Patrick Olivelle reads him as a philosopher-king, working out his ideas in public. | Patrick Olivelle, *Ashoka: Portrait of a Philosopher King* (Yale, 2023) | High for "philosopher-king", which is the book's title and thesis. "Working out his ideas in public" is the script's own gloss. |
+| The Buddhist legends about Ashoka never mention the Kalinga war. | The *Aśokāvadāna* and the Sri Lankan chronicles (*Dīpavaṃsa*, *Mahāvaṃsa*) tell other conversion stories. | High. Widely noted, e.g. by Thapar and by Nayanjot Lahiri, *Ashoka in Ancient India* (2015). |
+| The remorse comes only from his own inscriptions. | Rock Edict XIII | High. No other ancient source records the remorse. |
+
+No photos of the scholars are used. They are shown on text-only cards, per the image rules.

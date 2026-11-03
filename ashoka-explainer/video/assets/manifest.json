@@ -2,11 +2,12 @@
   "schema_version": 1,
   "project": "The King Who Apologized in Stone",
   "policy": {
-    "render_gate": "A photo slot shows a real image only when selected.file exists, selected.licence.status is 'verified' and selected.authenticity.verified is true. Otherwise the slot renders as a placeholder. With --preview-unverified, unverified selections render with an 'UNVERIFIED' watermark and the output is named *_PREVIEW_UNVERIFIED.mp4.",
+    "render_gate": "A photo slot shows a real image only when selected.file exists unchanged (sha256), the subject is verified by a named person, and the licence status is 'verified' or 'owner-accepted'. Otherwise it renders as a placeholder. --preview-unverified also shows other selected images, watermarked.",
     "licence_status_values": {
       "unknown": "No licence information found.",
       "reported-unverified": "A provider or file states a licence, but no person has checked it against the original source page.",
-      "verified": "A named person checked the licence on the original source page (verify-licence command)."
+      "verified": "A named person checked the licence on the original source page (verify-licence command).",
+      "owner-accepted": "The project owner decided to publish without independent licence verification (owner-accept command, which records who, when and why). Never displayed or reported as 'verified'."
     },
     "authenticity": "Search results are leads, not facts. An image is treated as showing the intended subject (e.g. the Kalsi rock edict) only after a named person confirms it (verify-subject command).",
     "folders": {
@@ -34,15 +35,16 @@
     "voiceover": {
       "kind": "generated",
       "file": "generated/vo.wav",
-      "made_by": "src/build_vo.py (Piper TTS, voice en-us-libritts-high, speaker 414)",
-      "source_url": "https://github.com/rhasspy/piper/releases/tag/v0.0.2",
+      "made_by": "src/build_vo.py (Kokoro-82M v1.0 via kokoro-onnx 0.6.1, voice af_heart, speed 0.95)",
+      "source_url": "https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0",
       "licence": {
         "status": "reported-unverified",
-        "reported_name": "CC BY 4.0",
-        "reported_by": "MODEL_CARD inside voice-en-us-libritts-high.tar.gz",
-        "notes": "The upstream LibriTTS dataset licence was not checked against its source page in this session."
+        "reported_name": "Apache-2.0 (model weights)",
+        "reported_by": "hexgrad/kokoro README ('Apache-licensed weights') and kokoro-onnx README ('kokoro model: Apache 2.0'), both read directly on GitHub 2026-11-03",
+        "notes": "The Hugging Face model card was not reachable from this session. Apache-2.0 does not require an on-screen credit."
       },
-      "attribution": "Voice: Piper TTS en-us-libritts-high (model card states CC BY 4.0; trained on LibriTTS)."
+      "attribution": "Voice: Kokoro-82M TTS (Apache-2.0).",
+      "quality_check": "Each sentence transcribed with Whisper base.en (sherpa-onnx): all sentences intelligible; only proper names were misspelled by the recogniser."
     },
     "timeline": {
       "kind": "generated",
@@ -76,6 +78,23 @@
       "kind": "generated",
       "made_by": "src/mix.py",
       "notes": "Sound effects and music bed are synthesised; no third-party audio."
+    },
+    "previous_voiceover": {
+      "kind": "generated",
+      "notes": "Earlier cuts used Piper en-us-libritts-high speaker 414 (model card states CC BY 4.0). Still available with TTS_ENGINE=piper."
+    },
+    "scholar_references": {
+      "kind": "text",
+      "items": [
+        "Romila Thapar, Aśoka and the Decline of the Mauryas (1961)",
+        "Upinder Singh, Political Violence in Ancient India (2017)",
+        "Patrick Olivelle, Ashoka: Portrait of a Philosopher King (2023)"
+      ],
+      "notes": "One-line paraphrases of each scholar's position; see FACT_CHECK.md. No photos of the scholars are used.",
+      "licence": {
+        "status": "n/a",
+        "notes": "Paraphrase with citation; no quotation."
+      }
     }
   },
   "slots": {
@@ -117,15 +136,20 @@
         "origin": "manual",
         "file": "assets/manual/kalsi.jpg",
         "sha256": "7d5f0784fef33b49a6a25efdc05d75cf34e2e8ef2db2ce44d64f1ce109f63e1c",
-        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "source_url": "Wikimedia Commons (stated by the project owner); exact file page not identified",
         "image_url": "",
         "title": "Inscribed boulder in shelter (owner-supplied photo 3)",
         "creator": "",
-        "attribution": "",
+        "attribution": "Photo: Wikimedia Commons (author unconfirmed)",
         "licence": {
-          "status": "reported-unverified",
+          "status": "owner-accepted",
           "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
-          "reported_by": "project owner in chat, 2026-11-03"
+          "reported_by": "project owner in chat, 2026-11-03",
+          "name": "licence unconfirmed",
+          "accepted_by": "Project owner (in chat, 2026-11-03)",
+          "accepted_on": "2026-11-03T08:21:15+00:00",
+          "basis": "Owner says the photo is from Wikimedia and chose 'Use all 4' knowing the author and licence are unconfirmed.",
+          "note": "Publication decision by the project owner. This is not an independent licence verification."
         },
         "authenticity": {
           "verified": true,
@@ -139,7 +163,7 @@
           "status": "not identified: no matching Commons file found by web search; 500x375 px suggests a thumbnail"
         }
       },
-      "download_status": "selected_unverified",
+      "download_status": "ready (owner-accepted licence)",
       "last_retrieval": "2026-11-03T07:45:58+00:00"
     },
     "dhauli": {
@@ -176,16 +200,21 @@
         "origin": "manual",
         "file": "assets/manual/dhauli.jpg",
         "sha256": "9875ac52abe1edcf6992ee32222b5b9ed1f858f67a06c5c7c7ae7dc206b73e15",
-        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Rock_edicts_of_Ashoka_at_Dhauli.jpg",
         "image_url": "",
         "title": "Inscribed rock face, close-up (owner-supplied photo 2)",
         "creator": "",
-        "attribution": "",
+        "attribution": "Photo: Bhajish Bharathan / Wikimedia Commons (cropped)",
         "licence": {
-          "status": "reported-unverified",
+          "status": "owner-accepted",
           "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
           "reported_by": "project owner in chat, 2026-11-03",
-          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Bhajish Bharathan, which requires attribution and share-alike; that conflicts with 'public domain'."
+          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Bhajish Bharathan, which requires attribution and share-alike; that conflicts with 'public domain'.",
+          "name": "CC BY-SA 4.0",
+          "accepted_by": "Project owner (in chat, 2026-11-03)",
+          "accepted_on": "2026-11-03T08:21:15+00:00",
+          "basis": "Owner says the photo is from Wikimedia and chose 'Use all 4'. File matches Commons 'Rock edicts of Ashoka at Dhauli.jpg' (6016x4000, 2.77 MB); that page states CC BY-SA 4.0 per a web-search summary (page not opened from this session).",
+          "note": "Publication decision by the project owner. This is not an independent licence verification."
         },
         "authenticity": {
           "verified": true,
@@ -202,9 +231,10 @@
           "note": "Supplied file EXIF: Nikon D3200, edited in Lightroom 2017-04-09; Commons page dates the photo 2017-03-25.",
           "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
           "licence_per_search_snippet": "CC BY-SA 4.0"
-        }
+        },
+        "source_match": "Supplied file matches the Commons original exactly by pixel size (6016x4000) and file size (2.77 MB), per a web-search summary of the file page."
       },
-      "download_status": "selected_unverified",
+      "download_status": "ready (owner-accepted licence)",
       "last_retrieval": "2026-11-03T07:45:58+00:00"
     },
     "pillar": {
@@ -241,16 +271,21 @@
         "origin": "manual",
         "file": "assets/manual/pillar.jpg",
         "sha256": "4f5ef5f98f8c5c5a70d3d66dd370eec509465eae7591cdb0d1a6e4f964600e42",
-        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "source_url": "Wikimedia Commons (stated by the project owner); exact file page not identified",
         "image_url": "",
         "title": "Pillar on ruined structure (owner-supplied photo 4)",
         "creator": "",
-        "attribution": "",
+        "attribution": "Photo: Wikimedia Commons (author unconfirmed)",
         "licence": {
-          "status": "reported-unverified",
+          "status": "owner-accepted",
           "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
           "reported_by": "project owner in chat, 2026-11-03",
-          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by IshiSenpai, which requires attribution and share-alike; that conflicts with 'public domain'."
+          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by IshiSenpai, which requires attribution and share-alike; that conflicts with 'public domain'.",
+          "name": "licence unconfirmed",
+          "accepted_by": "Project owner (in chat, 2026-11-03)",
+          "accepted_on": "2026-11-03T08:21:15+00:00",
+          "basis": "Owner says the photo is from Wikimedia and chose 'Use all 4' knowing the author and licence are unconfirmed.",
+          "note": "Publication decision by the project owner. This is not an independent licence verification."
         },
         "authenticity": {
           "verified": true,
@@ -269,7 +304,7 @@
           "licence_per_search_snippet": "CC BY-SA 4.0"
         }
       },
-      "download_status": "selected_unverified",
+      "download_status": "ready (owner-accepted licence)",
       "last_retrieval": "2026-11-03T07:45:58+00:00",
       "focus": "50% 12%"
     },
@@ -307,16 +342,21 @@
         "origin": "manual",
         "file": "assets/manual/sarnath.jpg",
         "sha256": "e428888049375546ae5513bef8848361ca5078821208ba5b8bd6177d2ea79d22",
-        "source_url": "unknown: supplied by the project owner in chat on 2026-11-03; original source page not provided",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sarnath_capital.jpg",
         "image_url": "",
         "title": "Lion Capital (owner-supplied photo 1)",
         "creator": "",
-        "attribution": "",
+        "attribution": "Photo: Chrisi1964 / Wikimedia Commons (cropped)",
         "licence": {
-          "status": "reported-unverified",
+          "status": "owner-accepted",
           "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
           "reported_by": "project owner in chat, 2026-11-03",
-          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Chrisi1964, which requires attribution and share-alike; that conflicts with 'public domain'."
+          "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Chrisi1964, which requires attribution and share-alike; that conflicts with 'public domain'.",
+          "name": "CC BY-SA 4.0",
+          "accepted_by": "Project owner (in chat, 2026-11-03)",
+          "accepted_on": "2026-11-03T08:21:15+00:00",
+          "basis": "Owner says the photo is from Wikimedia and chose 'Use all 4'. Proportions match Commons 'Sarnath capital.jpg'; that page states CC BY-SA 4.0 per a web-search summary (page not opened from this session).",
+          "note": "Publication decision by the project owner. This is not an independent licence verification."
         },
         "authenticity": {
           "verified": true,
@@ -333,9 +373,10 @@
           "note": "Supplied file is 1280x2285, consistent with a Commons 1280px rendition.",
           "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
           "licence_per_search_snippet": "CC BY-SA 4.0"
-        }
+        },
+        "source_match": "Supplied file (1280x2285) has the same aspect ratio as the Commons original (2667x4760), consistent with a 1280px rendition; not byte-verified."
       },
-      "download_status": "selected_unverified",
+      "download_status": "ready (owner-accepted licence)",
       "last_retrieval": "2026-11-03T07:45:58+00:00",
       "focus": "50% 4%"
     }
@@ -570,6 +611,25 @@
     },
     {
       "scene_id": "S12",
+      "name": "The scholarly debate",
+      "page_element": "sDeb",
+      "narration": {
+        "beat": "debate",
+        "sentences": [
+          0,
+          5
+        ]
+      },
+      "kind": "text",
+      "visual": "Header 'What historians argue'; three text-only scholar cards (Thapar 1961, Singh 2017, Olivelle 2023); twist card: Buddhist legends (Aśokāvadāna, Dīpavaṃsa, Mahāvaṃsa) never mention the Kalinga war; stamp 'Only source: his own inscriptions'.",
+      "slots": [],
+      "components": [
+        "scholar_references",
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S13",
       "name": "Conscience or strategy",
       "page_element": "sCl",
       "narration": {
@@ -587,7 +647,7 @@
       ]
     },
     {
-      "scene_id": "S13",
+      "scene_id": "S14",
       "name": "Still on the rock (loop)",
       "page_element": "sStone",
       "narration": {

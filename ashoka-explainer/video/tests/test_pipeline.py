@@ -191,6 +191,24 @@ class RetrievalTest(unittest.TestCase):
         self.assertEqual(s["selected"], keep); self.assertEqual(s["download_status"], "manual_unverified")
         self.assertTrue(s["candidates"])  # candidates are still recorded alongside
 
+    def test_owner_accept(self):
+        self.run_retrieval(providers="openverse")
+        m = assets.load(self.man); s = m["slots"]["kalsi"]
+
+        class A: pass
+        a = A(); a.slot = "kalsi"; a.candidate_id = "openverse:aaa"
+        assets.cmd_select(m, a)
+        a.by, a.basis, a.attribution, a.licence_label = "Owner", "owner decision", "Photo: X / Wikimedia Commons", "CC BY-SA 4.0"
+        assets.cmd_owner_accept(m, a)
+        self.assertEqual(assets.slot_state(s)[0], "unverified")  # subject still required
+        a.notes = "owner confirmed"; assets.cmd_verify_subject(m, a)
+        st, why = assets.slot_state(s)
+        self.assertEqual(st, "ready"); self.assertIn("NOT independently verified", why)
+        r = assets.resolve_slots(m, self.tmp)["kalsi"]
+        self.assertEqual(r["status"], "owner-accepted")
+        self.assertEqual(r["credit"], "Photo: X / Wikimedia Commons · CC BY-SA 4.0")
+        self.assertEqual(s["selected"]["licence"]["status"], "owner-accepted")  # never reported as verified
+
     def test_repo_manifest_untouched(self):
         self.run_retrieval(providers="openverse")
         self.assertEqual(assets.load(), self.orig)

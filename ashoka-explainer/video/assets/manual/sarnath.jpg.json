@@ -1,0 +1,38 @@
+{
+  "origin": "manual",
+  "file": "assets/manual/sarnath.jpg",
+  "sha256": "e428888049375546ae5513bef8848361ca5078821208ba5b8bd6177d2ea79d22",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Sarnath_capital.jpg",
+  "image_url": "",
+  "title": "Lion Capital (owner-supplied photo 1)",
+  "creator": "",
+  "attribution": "Photo: Chrisi1964 / Wikimedia Commons (cropped)",
+  "licence": {
+    "status": "owner-accepted",
+    "reported_name": "Public domain (stated by project owner: \"from Wikipedia, public domain\")",
+    "reported_by": "project owner in chat, 2026-11-03",
+    "conflict": "A web-search summary of the probable Commons page says CC BY-SA 4.0 by Chrisi1964, which requires attribution and share-alike; that conflicts with 'public domain'.",
+    "name": "CC BY-SA 4.0",
+    "accepted_by": "Project owner (in chat, 2026-11-03)",
+    "accepted_on": "2026-11-03T08:21:15+00:00",
+    "basis": "Owner says the photo is from Wikimedia and chose 'Use all 4'. Proportions match Commons 'Sarnath capital.jpg'; that page states CC BY-SA 4.0 per a web-search summary (page not opened from this session).",
+    "note": "Publication decision by the project owner. This is not an independent licence verification."
+  },
+  "authenticity": {
+    "verified": true,
+    "verified_by": "Project owner (in chat, 2026-11-03)",
+    "verified_on": "2026-11-03T08:03:28+00:00",
+    "notes": "Owner identified the supplied photos as: Sarnath lion capital, Dhauli edict, Kalsi edict, Delhi-Topra pillar. Matches Claude's visual check of each photo."
+  },
+  "selected_on": "2026-11-03T07:58:28+00:00",
+  "low_resolution": false,
+  "probable_source": {
+    "url": "https://commons.wikimedia.org/wiki/File:Sarnath_capital.jpg",
+    "author": "Chrisi1964",
+    "licence": "CC BY-SA 4.0",
+    "note": "Supplied file is 1280x2285, consistent with a Commons 1280px rendition.",
+    "status": "lead only: found via web search; the Commons page was not opened from this session and the match to the supplied file is not confirmed",
+    "licence_per_search_snippet": "CC BY-SA 4.0"
+  },
+  "source_match": "Supplied file (1280x2285) has the same aspect ratio as the Commons original (2667x4760), consistent with a 1280px rendition; not byte-verified."
+}
