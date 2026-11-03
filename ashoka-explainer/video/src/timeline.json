@@ -1,0 +1,579 @@
+{
+ "duration": 91.177,
+ "beats": [
+  {
+   "name": "cold",
+   "start": 0.35,
+   "sentences": [
+    {
+     "start": 0.35,
+     "end": 2.375,
+     "text": "Kings carve victories into stone.",
+     "chunks": [
+      {
+       "start": 0.35,
+       "end": 1.679,
+       "text": "Kings carve victories"
+      },
+      {
+       "start": 1.679,
+       "end": 2.375,
+       "text": "into stone."
+      }
+     ]
+    },
+    {
+     "start": 2.755,
+     "end": 4.41,
+     "text": "This one carved his regret.",
+     "chunks": [
+      {
+       "start": 2.755,
+       "end": 3.71,
+       "text": "This one carved"
+      },
+      {
+       "start": 3.71,
+       "end": 4.41,
+       "text": "his regret."
+      }
+     ]
+    }
+   ],
+   "end": 5.26
+  },
+  {
+   "name": "setup",
+   "start": 5.259501133786848,
+   "sentences": [
+    {
+     "start": 5.26,
+     "end": 9.503,
+     "text": "Ashoka ruled the largest empire India had yet seen.",
+     "chunks": [
+      {
+       "start": 5.26,
+       "end": 7.338,
+       "text": "Ashoka ruled the largest"
+      },
+      {
+       "start": 7.338,
+       "end": 8.724,
+       "text": "empire India had"
+      },
+      {
+       "start": 8.724,
+       "end": 9.503,
+       "text": "yet seen."
+      }
+     ]
+    },
+    {
+     "start": 9.883,
+     "end": 17.187,
+     "text": "Around 261 BCE, he invaded Kalinga, an independent kingdom on the east coast.",
+     "chunks": [
+      {
+       "start": 9.883,
+       "end": 11.364,
+       "text": "Around 261 BCE,"
+      },
+      {
+       "start": 11.364,
+       "end": 13.239,
+       "text": "he invaded Kalinga,"
+      },
+      {
+       "start": 13.239,
+       "end": 15.707,
+       "text": "an independent kingdom on"
+      },
+      {
+       "start": 15.707,
+       "end": 17.187,
+       "text": "the east coast."
+      }
+     ]
+    }
+   ],
+   "end": 18.037
+  },
+  {
+   "name": "numbers",
+   "start": 18.037210884353744,
+   "sentences": [
+    {
+     "start": 18.037,
+     "end": 24.183,
+     "text": "By his own count: a hundred thousand killed, a hundred and fifty thousand deported, and many more dead.",
+     "chunks": [
+      {
+       "start": 18.037,
+       "end": 19.092,
+       "text": "By his own count:"
+      },
+      {
+       "start": 19.092,
+       "end": 20.706,
+       "text": "a hundred thousand killed,"
+      },
+      {
+       "start": 20.706,
+       "end": 21.886,
+       "text": "a hundred and fifty"
+      },
+      {
+       "start": 21.886,
+       "end": 23.003,
+       "text": "thousand deported,"
+      },
+      {
+       "start": 23.003,
+       "end": 24.183,
+       "text": "and many more dead."
+      }
+     ]
+    },
+    {
+     "start": 24.563,
+     "end": 27.054,
+     "text": "Then he does something rulers almost never do.",
+     "chunks": [
+      {
+       "start": 24.563,
+       "end": 25.78,
+       "text": "Then he does something"
+      },
+      {
+       "start": 25.78,
+       "end": 27.054,
+       "text": "rulers almost never do."
+      }
+     ]
+    },
+    {
+     "start": 27.434,
+     "end": 28.894,
+     "text": "He says he feels remorse.",
+     "chunks": [
+      {
+       "start": 27.434,
+       "end": 28.042,
+       "text": "He says he"
+      },
+      {
+       "start": 28.042,
+       "end": 28.894,
+       "text": "feels remorse."
+      }
+     ]
+    },
+    {
+     "start": 29.274,
+     "end": 30.036,
+     "text": "In public.",
+     "chunks": [
+      {
+       "start": 29.274,
+       "end": 30.036,
+       "text": "In public."
+      }
+     ]
+    },
+    {
+     "start": 30.336,
+     "end": 31.109,
+     "text": "On a rock.",
+     "chunks": [
+      {
+       "start": 30.336,
+       "end": 31.109,
+       "text": "On a rock."
+      }
+     ]
+    }
+   ],
+   "end": 31.959
+  },
+  {
+   "name": "turn",
+   "start": 31.95931972789116,
+   "sentences": [
+    {
+     "start": 31.959,
+     "end": 33.002,
+     "text": "But here's the thing.",
+     "chunks": [
+      {
+       "start": 31.959,
+       "end": 33.002,
+       "text": "But here's the thing."
+      }
+     ]
+    },
+    {
+     "start": 33.382,
+     "end": 35.001,
+     "text": "These aren't diary entries.",
+     "chunks": [
+      {
+       "start": 33.382,
+       "end": 35.001,
+       "text": "These aren't diary entries."
+      }
+     ]
+    },
+    {
+     "start": 35.381,
+     "end": 38.244,
+     "text": "They're public notices, meant to be read aloud to crowds.",
+     "chunks": [
+      {
+       "start": 35.381,
+       "end": 36.578,
+       "text": "They're public notices,"
+      },
+      {
+       "start": 36.578,
+       "end": 37.411,
+       "text": "meant to be read"
+      },
+      {
+       "start": 37.411,
+       "end": 38.244,
+       "text": "aloud to crowds."
+      }
+     ]
+    },
+    {
+     "start": 38.624,
+     "end": 41.521,
+     "text": "And in Kalinga itself, the confession is left out.",
+     "chunks": [
+      {
+       "start": 38.624,
+       "end": 39.951,
+       "text": "And in Kalinga itself,"
+      },
+      {
+       "start": 39.951,
+       "end": 40.977,
+       "text": "the confession is"
+      },
+      {
+       "start": 40.977,
+       "end": 41.521,
+       "text": "left out."
+      }
+     ]
+    },
+    {
+     "start": 41.901,
+     "end": 45.473,
+     "text": "So: was this a king in pain, or a king managing his image?",
+     "chunks": [
+      {
+       "start": 41.901,
+       "end": 42.099,
+       "text": "So:"
+      },
+      {
+       "start": 42.099,
+       "end": 43.092,
+       "text": "was this a king"
+      },
+      {
+       "start": 43.092,
+       "end": 43.621,
+       "text": "in pain,"
+      },
+      {
+       "start": 43.621,
+       "end": 44.812,
+       "text": "or a king managing"
+      },
+      {
+       "start": 44.812,
+       "end": 45.473,
+       "text": "his image?"
+      }
+     ]
+    }
+   ],
+   "end": 46.323
+  },
+  {
+   "name": "evidence",
+   "start": 46.32346938775511,
+   "sentences": [
+    {
+     "start": 46.323,
+     "end": 53.202,
+     "text": "The case for sincerity: he urges people to watch themselves for cruelty, anger, pride and envy.",
+     "chunks": [
+      {
+       "start": 46.323,
+       "end": 48.062,
+       "text": "The case for sincerity:"
+      },
+      {
+       "start": 48.062,
+       "end": 49.422,
+       "text": "he urges people to"
+      },
+      {
+       "start": 49.422,
+       "end": 51.614,
+       "text": "watch themselves for cruelty,"
+      },
+      {
+       "start": 51.614,
+       "end": 52.068,
+       "text": "anger,"
+      },
+      {
+       "start": 52.068,
+       "end": 53.202,
+       "text": "pride and envy."
+      }
+     ]
+    },
+    {
+     "start": 53.582,
+     "end": 57.403,
+     "text": "He funds medicine for people and animals, and wells along the roads.",
+     "chunks": [
+      {
+       "start": 53.582,
+       "end": 54.816,
+       "text": "He funds medicine for"
+      },
+      {
+       "start": 54.816,
+       "end": 55.933,
+       "text": "people and animals,"
+      },
+      {
+       "start": 55.933,
+       "end": 56.815,
+       "text": "and wells along"
+      },
+      {
+       "start": 56.815,
+       "end": 57.403,
+       "text": "the roads."
+      }
+     ]
+    },
+    {
+     "start": 57.783,
+     "end": 67.1,
+     "text": "The case for strategy: he keeps the death penalty, and warns forest tribes that, remorse or not, he can still punish them.",
+     "chunks": [
+      {
+       "start": 57.783,
+       "end": 59.565,
+       "text": "The case for strategy:"
+      },
+      {
+       "start": 59.565,
+       "end": 60.538,
+       "text": "he keeps the"
+      },
+      {
+       "start": 60.538,
+       "end": 61.672,
+       "text": "death penalty,"
+      },
+      {
+       "start": 61.672,
+       "end": 62.968,
+       "text": "and warns forest"
+      },
+      {
+       "start": 62.968,
+       "end": 63.94,
+       "text": "tribes that,"
+      },
+      {
+       "start": 63.94,
+       "end": 65.156,
+       "text": "remorse or not,"
+      },
+      {
+       "start": 65.156,
+       "end": 66.128,
+       "text": "he can still"
+      },
+      {
+       "start": 66.128,
+       "end": 67.1,
+       "text": "punish them."
+      }
+     ]
+    }
+   ],
+   "end": 67.95
+  },
+  {
+   "name": "thesis",
+   "start": 67.95011337868482,
+   "sentences": [
+    {
+     "start": 67.95,
+     "end": 69.267,
+     "text": "Maybe that's the point.",
+     "chunks": [
+      {
+       "start": 67.95,
+       "end": 69.267,
+       "text": "Maybe that's the point."
+      }
+     ]
+    },
+    {
+     "start": 69.647,
+     "end": 71.521,
+     "text": "Ashoka didn't just feel something.",
+     "chunks": [
+      {
+       "start": 69.647,
+       "end": 70.669,
+       "text": "Ashoka didn't just"
+      },
+      {
+       "start": 70.669,
+       "end": 71.521,
+       "text": "feel something."
+      }
+     ]
+    },
+    {
+     "start": 71.901,
+     "end": 76.123,
+     "text": "He turned a feeling into policy, and carved it across an empire.",
+     "chunks": [
+      {
+       "start": 71.901,
+       "end": 73.216,
+       "text": "He turned a feeling"
+      },
+      {
+       "start": 73.216,
+       "end": 74.047,
+       "text": "into policy,"
+      },
+      {
+       "start": 74.047,
+       "end": 75.431,
+       "text": "and carved it across"
+      },
+      {
+       "start": 75.431,
+       "end": 76.123,
+       "text": "an empire."
+      }
+     ]
+    },
+    {
+     "start": 76.503,
+     "end": 78.157,
+     "text": "Remorse became a way to govern.",
+     "chunks": [
+      {
+       "start": 76.503,
+       "end": 77.606,
+       "text": "Remorse became a way"
+      },
+      {
+       "start": 77.606,
+       "end": 78.157,
+       "text": "to govern."
+      }
+     ]
+    }
+   ],
+   "end": 79.007
+  },
+  {
+   "name": "close",
+   "start": 79.00723356009068,
+   "sentences": [
+    {
+     "start": 79.007,
+     "end": 80.928,
+     "text": "So was it conscience or strategy?",
+     "chunks": [
+      {
+       "start": 79.007,
+       "end": 80.208,
+       "text": "So was it conscience"
+      },
+      {
+       "start": 80.208,
+       "end": 80.928,
+       "text": "or strategy?"
+      }
+     ]
+    },
+    {
+     "start": 81.308,
+     "end": 82.767,
+     "text": "Historians still argue.",
+     "chunks": [
+      {
+       "start": 81.308,
+       "end": 82.767,
+       "text": "Historians still argue."
+      }
+     ]
+    },
+    {
+     "start": 83.147,
+     "end": 87.166,
+     "text": "Either way, it's a rare moment where a ruler lets us read his emotions.",
+     "chunks": [
+      {
+       "start": 83.147,
+       "end": 83.797,
+       "text": "Either way,"
+      },
+      {
+       "start": 83.797,
+       "end": 84.861,
+       "text": "it's a rare moment"
+      },
+      {
+       "start": 84.861,
+       "end": 85.925,
+       "text": "where a ruler lets"
+      },
+      {
+       "start": 85.925,
+       "end": 87.166,
+       "text": "us read his emotions."
+      }
+     ]
+    },
+    {
+     "start": 87.546,
+     "end": 88.977,
+     "text": "And they're still on the rock.",
+     "chunks": [
+      {
+       "start": 87.546,
+       "end": 88.533,
+       "text": "And they're still on"
+      },
+      {
+       "start": 88.533,
+       "end": 88.977,
+       "text": "the rock."
+      }
+     ]
+    }
+   ],
+   "end": 88.977
+  }
+ ]
+}
