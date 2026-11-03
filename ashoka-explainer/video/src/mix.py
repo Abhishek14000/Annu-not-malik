@@ -1,5 +1,7 @@
-import json, numpy as np, soundfile as sf
+import json, os, subprocess, numpy as np, soundfile as sf
 SR=48000; rng=np.random.default_rng(7)
+if not os.path.exists('vo/vo48.wav') or os.path.getmtime('vo/vo48.wav')<os.path.getmtime('vo/vo.wav'):
+    subprocess.run(['ffmpeg','-y','-loglevel','error','-i','vo/vo.wav','-ar','48000','-ac','1','vo/vo48.wav'],check=True)
 vo,_=sf.read('vo/vo48.wav'); N=len(vo); t=np.arange(N)/SR
 def env(n,a,d): x=np.arange(n)/SR; return np.minimum(x/a,1)*np.exp(-x/d)
 def bp(x,lo,hi):

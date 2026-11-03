@@ -1,6 +1,8 @@
-import json, re, sys, numpy as np, soundfile as sf
+import json, os, re, sys, numpy as np, soundfile as sf
 from piper import PiperVoice, SynthesisConfig
-MODEL="/tmp/claude-0/probe/en-us-libritts-high/en-us-libritts-high.onnx"
+# Voice model: set PIPER_MODEL, or run `run_pipeline.py --fetch-voice` (saves to video/.cache/voices/).
+MODEL=os.environ.get("PIPER_MODEL", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".cache", "voices", "en-us-libritts-high", "en-us-libritts-high.onnx"))
+if not os.path.exists(MODEL): sys.exit(f"voice model not found: {MODEL}")
 SPK=int(sys.argv[1]) if len(sys.argv)>1 else 92
 v=PiperVoice.load(MODEL, config_path=MODEL+".json"); SR=v.config.sample_rate
 # (display text, spoken text or None)
@@ -50,7 +52,7 @@ for bi,(name,sents) in enumerate(BEATS):
     b["end"]=round(t,3); TL.append(b)
 tail=2.2; audio.append(np.zeros(int(tail*SR))); t+=tail
 y=np.concatenate(audio); y=y/np.abs(y).max()*0.89
-sf.write("vo/vo.wav", y, SR)
+os.makedirs("vo", exist_ok=True); sf.write("vo/vo.wav", y, SR, subtype="PCM_16")
 json.dump({"duration":round(t,3),"beats":TL}, open("timeline.json","w"), indent=1)
 for b in TL: print(b["name"], round(b["start"],2), round(b["end"],2))
 print("total", round(t,2))

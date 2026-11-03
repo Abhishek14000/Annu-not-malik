@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "project": "The King Who Apologized in Stone",
+  "policy": {
+    "render_gate": "A photo slot shows a real image only when selected.file exists, selected.licence.status is 'verified' and selected.authenticity.verified is true. Otherwise the slot renders as a placeholder. With --preview-unverified, unverified selections render with an 'UNVERIFIED' watermark and the output is named *_PREVIEW_UNVERIFIED.mp4.",
+    "licence_status_values": {
+      "unknown": "No licence information found.",
+      "reported-unverified": "A provider or file states a licence, but no person has checked it against the original source page.",
+      "verified": "A named person checked the licence on the original source page (verify-licence command)."
+    },
+    "authenticity": "Search results are leads, not facts. An image is treated as showing the intended subject (e.g. the Kalsi rock edict) only after a named person confirms it (verify-subject command).",
+    "folders": {
+      "assets/retrieved/": "Images downloaded by retrieve_images.py, each with a .json sidecar holding provider, source and licence metadata.",
+      "assets/manual/": "Images a person added with `assets.py add-manual` (e.g. downloaded from Wikimedia Commons on another network).",
+      "generated/": "Pipeline-made assets: voiceover, timeline, map geometry.",
+      "placeholders": "Not files. Photo-slot placeholders are drawn by page.template.html at render time."
+    }
+  },
+  "components": {
+    "map_geometry": {
+      "kind": "generated",
+      "file": "generated/map.json",
+      "made_by": "src/map.mjs",
+      "source": "Natural Earth 1:50m land, version 4.1.0, redistributed by the world-atlas npm package 2.0.2",
+      "source_url": "https://www.naturalearthdata.com/",
+      "licence": {
+        "status": "reported-unverified",
+        "reported_name": "Public domain (Natural Earth terms of use)",
+        "notes": "world-atlas package licence is ISC (checked in package.json). Natural Earth's public-domain terms are stated on naturalearthdata.com, which was not opened in this session."
+      },
+      "attribution": "Made with Natural Earth.",
+      "notes": "Mauryan and Kalinga borders are hand-drawn approximations in src/map.mjs; the video labels them 'Borders approximate'."
+    },
+    "voiceover": {
+      "kind": "generated",
+      "file": "generated/vo.wav",
+      "made_by": "src/build_vo.py (Piper TTS, voice en-us-libritts-high, speaker 414)",
+      "source_url": "https://github.com/rhasspy/piper/releases/tag/v0.0.2",
+      "licence": {
+        "status": "reported-unverified",
+        "reported_name": "CC BY 4.0",
+        "reported_by": "MODEL_CARD inside voice-en-us-libritts-high.tar.gz",
+        "notes": "The upstream LibriTTS dataset licence was not checked against its source page in this session."
+      },
+      "attribution": "Voice: Piper TTS en-us-libritts-high (model card states CC BY 4.0; trained on LibriTTS)."
+    },
+    "timeline": {
+      "kind": "generated",
+      "file": "generated/timeline.json",
+      "made_by": "src/build_vo.py"
+    },
+    "fonts": {
+      "kind": "third-party",
+      "items": [
+        "@fontsource/playfair-display 5.1.0",
+        "@fontsource/inter 5.1.0",
+        "@fontsource/noto-sans-brahmi 5.3.0"
+      ],
+      "licence": {
+        "status": "reported-unverified",
+        "reported_name": "OFL-1.1",
+        "reported_by": "package.json license field of each @fontsource package"
+      }
+    },
+    "quote_re13": {
+      "kind": "text",
+      "text": "Now Beloved-of-the-Gods feels deep remorse for having conquered the Kalingas.",
+      "source": "S. Dhammika, The Edicts of King Asoka (1993), Rock Edict XIII",
+      "licence": {
+        "status": "unknown",
+        "notes": "Short quotation with on-screen credit. Distributed by the Buddhist Publication Society; reuse terms not checked in this session."
+      },
+      "attribution": "Trans. S. Dhammika, The Edicts of King Asoka"
+    },
+    "sound": {
+      "kind": "generated",
+      "made_by": "src/mix.py",
+      "notes": "Sound effects and music bed are synthesised; no third-party audio."
+    }
+  },
+  "slots": {
+    "kalsi": {
+      "intended_subject": "Ashoka's Major Rock Edict at Kalsi (Khalsi), Dehradun district, Uttarakhand. Brahmi text; carries Rock Edicts I–XIV incl. XIII.",
+      "on_frame_label": "Rock edict, Kalsi (Uttarakhand)",
+      "on_frame_note": "Carries Rock Edicts I–XIV, incl. XIII",
+      "search_queries": {
+        "general": [
+          "Kalsi rock edict Ashoka",
+          "Khalsi Ashoka rock edict Brahmi",
+          "Ashoka major rock edict Kalsi Dehradun"
+        ],
+        "loc": [
+          "Kalsi inscription",
+          "Asoka inscription Kalsi"
+        ],
+        "internet_archive": [
+          "Kalsi Asoka inscription",
+          "Asoka rock edict"
+        ]
+      },
+      "reference_leads": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Category:Ashoka_Major_Rock_Edict,_Khalsi",
+          "status": "found via web search; page not opened (blocked)"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Kalsi_inscription_East_face.jpg",
+          "status": "found via web search; page not opened (blocked)"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:0051823_Major_rock_edict_of_Asoka,_Kalsi_Uttarakhand_039.jpg",
+          "status": "found via web search; page not opened (blocked)"
+        }
+      ],
+      "candidates": [],
+      "selected": null,
+      "download_status": "failed: no provider reachable (placeholder kept)",
+      "last_retrieval": "2026-11-03T07:45:58+00:00"
+    },
+    "dhauli": {
+      "intended_subject": "Ashoka's rock edict at Dhauli near Bhubaneswar, Odisha (ancient Kalinga). Must NOT be labelled Rock Edict XIII, which is absent here.",
+      "on_frame_label": "Dhauli, ancient Kalinga (Odisha)",
+      "on_frame_note": "Rock Edicts XI–XIII are not carved here",
+      "search_queries": {
+        "general": [
+          "Dhauli rock edict Ashoka",
+          "Dhauli Ashoka inscription Bhubaneswar",
+          "Dhauli elephant rock Odisha"
+        ],
+        "loc": [
+          "Dhauli",
+          "Asoka inscription Dhauli"
+        ],
+        "internet_archive": [
+          "Dhauli Asoka",
+          "Dhauli inscription"
+        ]
+      },
+      "reference_leads": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Rock_edicts_of_Ashoka_at_Dhauli.jpg",
+          "status": "found via web search (snippet said CC BY-SA 4.0); page not opened (blocked)"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/Category:Ashoka_Major_Rock_Edict,_Dhauli",
+          "status": "found via web search; page not opened (blocked)"
+        }
+      ],
+      "candidates": [],
+      "selected": null,
+      "download_status": "failed: no provider reachable (placeholder kept)",
+      "last_retrieval": "2026-11-03T07:45:58+00:00"
+    },
+    "pillar": {
+      "intended_subject": "Delhi-Topra Ashoka pillar at Feroz Shah Kotla, Delhi (Pillar Edicts I–VII). Lauriya Nandangarh pillar (PE I–VI) is an acceptable alternative if the label is changed.",
+      "on_frame_label": "Ashoka pillar, Delhi-Topra",
+      "on_frame_note": "Carries Pillar Edicts I–VII, incl. III & IV",
+      "search_queries": {
+        "general": [
+          "Ashoka pillar Feroz Shah Kotla",
+          "Delhi-Topra pillar Ashoka",
+          "Firoz Shah Kotla lat"
+        ],
+        "loc": [
+          "Feroz Shah Kotla",
+          "Firoz Shah's lat Delhi"
+        ],
+        "internet_archive": [
+          "Feroz Shah Kotla pillar",
+          "Asoka pillar Delhi"
+        ]
+      },
+      "reference_leads": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/Category:Ashoka_pillar,_Feroz_Shah_Kotla,_Delhi",
+          "status": "found via web search; page not opened (blocked)"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Ashoka_Pillar_at_Feroze_Shah_Kotla,_Delhi_05.JPG",
+          "status": "found via web search; page not opened (blocked)"
+        }
+      ],
+      "candidates": [],
+      "selected": null,
+      "download_status": "failed: no provider reachable (placeholder kept)",
+      "last_retrieval": "2026-11-03T07:45:58+00:00"
+    },
+    "sarnath": {
+      "intended_subject": "The Lion Capital of Ashoka from Sarnath, in the Sarnath Archaeological Museum.",
+      "on_frame_label": "Lion Capital of Ashoka, Sarnath",
+      "on_frame_note": "Sarnath Museum",
+      "search_queries": {
+        "general": [
+          "Lion Capital of Ashoka Sarnath",
+          "Sarnath lion capital museum",
+          "Ashoka lion capital"
+        ],
+        "loc": [
+          "Sarnath lion capital",
+          "Sarnath"
+        ],
+        "internet_archive": [
+          "Sarnath lion capital",
+          "Sarnath capital Asoka"
+        ]
+      },
+      "reference_leads": [
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Sarnath_capital.jpg",
+          "status": "found via web search (snippet said CC BY-SA 4.0); page not opened (blocked)"
+        },
+        {
+          "url": "https://commons.wikimedia.org/wiki/File:Lion_capital_of_Ashoka,_Sarnath.jpg",
+          "status": "found via web search; page not opened (blocked)"
+        }
+      ],
+      "candidates": [],
+      "selected": null,
+      "download_status": "failed: no provider reachable (placeholder kept)",
+      "last_retrieval": "2026-11-03T07:45:58+00:00"
+    }
+  },
+  "scenes": [
+    {
+      "scene_id": "S01",
+      "name": "Cold open",
+      "page_element": "sStone",
+      "narration": {
+        "beat": "cold",
+        "sentences": [
+          0,
+          1
+        ]
+      },
+      "kind": "generated",
+      "visual": "Procedural stone texture; Brahmi title typeset in Noto Sans Brahmi and revealed with chisel sounds; 'Kings brag. / He confessed.'",
+      "slots": [
+        {
+          "slot": "kalsi",
+          "role": "optional background behind the Brahmi text"
+        }
+      ],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S02",
+      "name": "Setup map",
+      "page_element": "sMap",
+      "narration": {
+        "beat": "setup",
+        "sentences": [
+          0,
+          1
+        ]
+      },
+      "kind": "generated",
+      "visual": "Map draws in; Mauryan empire fills ochre; Kalinga hatched as independent; Tamil kingdoms labelled never conquered; 'Borders approximate'.",
+      "slots": [],
+      "components": [
+        "map_geometry",
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S03",
+      "name": "The numbers",
+      "page_element": "sMap",
+      "narration": {
+        "beat": "numbers",
+        "sentences": [
+          0,
+          0
+        ]
+      },
+      "kind": "generated",
+      "visual": "Map zooms to Kalinga, which turns red; counters 100,000 killed / 150,000 deported / + many more dead; source tag Rock Edict XIII.",
+      "slots": [],
+      "components": [
+        "map_geometry",
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S04",
+      "name": "Remorse on a rock",
+      "page_element": "sRem",
+      "narration": {
+        "beat": "numbers",
+        "sentences": [
+          1,
+          4
+        ]
+      },
+      "kind": "photo",
+      "visual": "Kalsi rock edict photo with slow zoom; RE XIII quote card; 'IN PUBLIC.' and 'ON A ROCK.' stamps.",
+      "slots": [
+        {
+          "slot": "kalsi",
+          "role": "full-frame photo"
+        }
+      ],
+      "components": [
+        "quote_re13",
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S05",
+      "name": "Not a diary",
+      "page_element": "sTurn",
+      "narration": {
+        "beat": "turn",
+        "sentences": [
+          0,
+          2
+        ]
+      },
+      "kind": "generated",
+      "visual": "'But here's the thing.' Diary icon crossed out; public notice icon with sound waves, 'Read aloud to crowds'.",
+      "slots": [],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S06",
+      "name": "Left out in Kalinga",
+      "page_element": "sDhauli",
+      "narration": {
+        "beat": "turn",
+        "sentences": [
+          3,
+          3
+        ]
+      },
+      "kind": "photo",
+      "visual": "Dhauli photo with 'Left out in Kalinga' card: Rock Edict XIII isn't carved at Dhauli or Jaugada.",
+      "slots": [
+        {
+          "slot": "dhauli",
+          "role": "full-frame photo"
+        }
+      ],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S07",
+      "name": "Feeling or performance",
+      "page_element": "sQ",
+      "narration": {
+        "beat": "turn",
+        "sentences": [
+          4,
+          4
+        ]
+      },
+      "kind": "text",
+      "visual": "Split card: teal 'Feeling…' over red '…or performance?'.",
+      "slots": [],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S08",
+      "name": "Evidence both ways",
+      "page_element": "sEv",
+      "narration": {
+        "beat": "evidence",
+        "sentences": [
+          0,
+          2
+        ]
+      },
+      "kind": "photo",
+      "visual": "Pillar photo strip; 'Sincere?' vs 'Strategic?' columns with five cited cards (PE III, RE II x2, PE IV, RE XIII).",
+      "slots": [
+        {
+          "slot": "pillar",
+          "role": "top photo strip"
+        }
+      ],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S09",
+      "name": "Feeling into policy",
+      "page_element": "sTh",
+      "narration": {
+        "beat": "thesis",
+        "sentences": [
+          0,
+          1
+        ]
+      },
+      "kind": "text",
+      "visual": "'Maybe that's the point.' then 'feeling' → 'policy'.",
+      "slots": [],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S10",
+      "name": "Edicts across an empire",
+      "page_element": "sMap",
+      "narration": {
+        "beat": "thesis",
+        "sentences": [
+          2,
+          2
+        ]
+      },
+      "kind": "generated",
+      "visual": "Unzoomed map; 19 edict sites pop in; title 'Empathy as statecraft'.",
+      "slots": [],
+      "components": [
+        "map_geometry",
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S11",
+      "name": "A way to govern",
+      "page_element": "sSar",
+      "narration": {
+        "beat": "thesis",
+        "sentences": [
+          3,
+          3
+        ]
+      },
+      "kind": "photo",
+      "visual": "Sarnath Lion Capital photo with 'Remorse → a way to govern' card.",
+      "slots": [
+        {
+          "slot": "sarnath",
+          "role": "full-frame photo"
+        }
+      ],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S12",
+      "name": "Conscience or strategy",
+      "page_element": "sCl",
+      "narration": {
+        "beat": "close",
+        "sentences": [
+          0,
+          1
+        ]
+      },
+      "kind": "text",
+      "visual": "'Conscience or strategy?' and 'Historians still argue'.",
+      "slots": [],
+      "components": [
+        "fonts"
+      ]
+    },
+    {
+      "scene_id": "S13",
+      "name": "Still on the rock (loop)",
+      "page_element": "sStone",
+      "narration": {
+        "beat": "close",
+        "sentences": [
+          2,
+          3
+        ]
+      },
+      "kind": "generated",
+      "visual": "Back to the stone and Brahmi shot so the video loops; CTA 'Real or performed? Comment 👇'.",
+      "slots": [
+        {
+          "slot": "kalsi",
+          "role": "optional background behind the Brahmi text"
+        }
+      ],
+      "components": [
+        "fonts"
+      ]
+    }
+  ]
+}

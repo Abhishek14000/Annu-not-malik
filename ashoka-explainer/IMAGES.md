@@ -1,5 +1,7 @@
 # Image shortlist: "The King Who Apologized in Stone"
 
+> **Live status is now in [`video/ASSET_MANIFEST.md`](video/ASSET_MANIFEST.md)**, generated from `video/assets/manifest.json`. This file is the original research shortlist. Its Commons links are recorded as unopened leads in the manifest.
+
 **Status: candidates only. No licence is confirmed yet.** This session's network couldn't reach `commons.wikimedia.org`, so I found these files through web search and couldn't open their file pages. Before you use any file, open its Commons page, record the licence and author in the table, and check that the photo shows what its title says.
 
 | Beat | Candidate file (Wikimedia Commons) | Licence | Notes |

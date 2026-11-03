@@ -1,0 +1,5 @@
+node_modules/
+build/
+.cache/
+__pycache__/
+build_full.log

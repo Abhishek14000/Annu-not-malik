@@ -1,7 +1,9 @@
 import fs from 'fs';
 import {geoMercator, geoPath, geoArea} from 'd3-geo';
 import * as topo from 'topojson-client';
-const w = JSON.parse(fs.readFileSync('node_modules/world-atlas/land-50m.json'));
+import {createRequire} from 'module';
+const require = createRequire(import.meta.url);
+const w = JSON.parse(fs.readFileSync(require.resolve('world-atlas/land-50m.json')));
 const land = topo.feature(w, w.objects.land);
 const W=1000,H=1100;
 const bbox = {type:'Polygon',coordinates:[[[61,5],[61,37.5],[93,37.5],[93,5],[61,5]].reverse()]};
@@ -22,5 +24,6 @@ const sites = {
 const out = {W,H,land:landD,empire:path(empire),kalinga:path(kalinga),
   sites:Object.fromEntries(Object.entries(sites).map(([k,v])=>[k,proj(v)])),
   kalingaCenter:proj([84.6,20.3]), south:proj([78,10.5]), empireLabel:proj([78.5,24.5])};
-fs.writeFileSync('../map.json', JSON.stringify(out));
+const OUT = process.argv[2] || 'map.json';
+fs.writeFileSync(OUT, JSON.stringify(out));
 console.log(landD.length, out.kalingaCenter, out.sites.Dhauli);
