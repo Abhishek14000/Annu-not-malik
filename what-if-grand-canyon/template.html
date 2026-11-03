@@ -1,0 +1,281 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Fredoka";font-weight:500;src:url("node_modules/@fontsource/fredoka/files/fredoka-latin-500-normal.woff2")}
+@font-face{font-family:"Fredoka";font-weight:600;src:url("node_modules/@fontsource/fredoka/files/fredoka-latin-600-normal.woff2")}
+@font-face{font-family:"Fredoka";font-weight:700;src:url("node_modules/@fontsource/fredoka/files/fredoka-latin-700-normal.woff2")}
+@font-face{font-family:"Inter";font-weight:600;src:url("node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2")}
+@font-face{font-family:"Inter";font-weight:800;src:url("node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2")}
+:root{--ink:#1F1B2E;--pee:#F6D33C;--peeD:#E2B514;--sky1:#7CC8F2;--sky2:#CDEBFA;--rock1:#B9472A;--rock2:#D2683D;--rock3:#E59460;--rock4:#A23B22;--rock5:#7E2C1B;--river:#2FB6C3;--cream:#FFF8EC;--green:#3BAE6A}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--sky2)}
+body{font-family:Fredoka,sans-serif;color:var(--ink);position:relative}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;opacity:0}
+.title{font:700 84px/1.05 Fredoka;color:#fff;text-align:center;-webkit-text-stroke:0;text-shadow:0 6px 0 var(--ink),4px 4px 0 var(--ink),-4px 4px 0 var(--ink),4px -2px 0 var(--ink),-4px -2px 0 var(--ink)}
+.big{font:700 120px/1 Fredoka;color:var(--ink)}
+.panel{background:var(--cream);border:6px solid var(--ink);border-radius:36px;box-shadow:0 12px 0 var(--ink)}
+.chip{display:inline-block;background:var(--ink);color:#fff;font:600 34px Fredoka;padding:8px 22px;border-radius:999px}
+.src{font:600 22px Inter;color:#3b3550;opacity:.75}
+#cap{position:absolute;left:50%;bottom:440px;transform:translateX(-50%);max-width:960px;text-align:center;z-index:40}
+#cap span{display:inline;background:var(--ink);color:#fff;font:600 56px/1.4 Fredoka;padding:6px 20px;border-radius:16px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+</style></head>
+<body>
+<!-- persistent sky -->
+<div class="abs" style="inset:0;background:linear-gradient(var(--sky1),var(--sky2) 60%)"></div>
+<svg class="abs" id="sunSvg" width="1080" height="1920" style="left:0;top:0"><g id="sun"><circle cx="880" cy="250" r="90" fill="#FFD84D"/><circle cx="880" cy="250" r="120" fill="#FFD84D" opacity=".25"/></g>
+  <g id="clouds" fill="#fff" opacity=".9"><ellipse cx="200" cy="300" rx="110" ry="40"/><ellipse cx="260" cy="280" rx="80" ry="45"/><ellipse cx="640" cy="420" rx="90" ry="32"/><ellipse cx="690" cy="404" rx="60" ry="34"/></g></svg>
+
+<!-- S1/S2/S4/S9: canyon cross-section -->
+<div class="scene" id="sCanyon">
+  <svg id="cv" class="abs" width="1080" height="1520" viewBox="0 0 1080 1520" style="left:0;top:400px;transform-origin:0 0;overflow:visible">
+    <defs>
+      <clipPath id="rockClip"><path id="rockPathC"/></clipPath>
+      <clipPath id="voidClip"><path id="voidPathC"/></clipPath>
+    </defs>
+    <g clip-path="url(#rockClip)" id="strata"></g>
+    <path id="rockOutline" fill="none" stroke="#5c2414" stroke-width="5" stroke-linejoin="round"/>
+    <g clip-path="url(#voidClip)"><rect id="lake" x="0" y="900" width="1080" height="900" fill="var(--pee)" opacity=".92"/></g>
+    <path id="river" d="M526 768 Q548 778 570 768" stroke="var(--river)" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <g id="people"></g>
+    <g id="stream"></g>
+    <g id="drops"></g>
+    <g id="ruler" opacity="0"><line x1="960" y1="140" x2="960" y2="770" stroke="var(--ink)" stroke-width="6"/><line x1="935" y1="140" x2="985" y2="140" stroke="var(--ink)" stroke-width="6"/><line x1="935" y1="770" x2="985" y2="770" stroke="var(--ink)" stroke-width="6"/>
+      <text x="945" y="470" font-family="Fredoka" font-weight="700" font-size="44" fill="var(--ink)" text-anchor="end">1.8 km</text></g>
+    <g id="stink" opacity="0" stroke="#8a9a2a" stroke-width="6" fill="none" stroke-linecap="round"><path d="M600 420 q14 -20 0 -40 q-14 -20 0 -40"/><path d="M640 450 q14 -20 0 -40 q-14 -20 0 -40"/><path d="M680 420 q14 -20 0 -40 q-14 -20 0 -40"/></g>
+    <g id="tubDot" opacity="0"><circle cx="548" cy="760" r="5" fill="var(--peeD)"/><circle cx="548" cy="760" r="40" fill="none" stroke="var(--ink)" stroke-width="6"/><line x1="576" y1="732" x2="640" y2="668" stroke="var(--ink)" stroke-width="10" stroke-linecap="round"/></g>
+    <g id="flow" opacity="0"><path d="M420 830 H700" stroke="var(--river)" stroke-width="10" stroke-dasharray="26 18" fill="none"/><path d="M690 812 L716 830 L690 848" fill="var(--river)"/></g>
+  </svg>
+  <div class="abs title" id="hookT" style="left:50px;right:50px;top:150px;opacity:0">What if <span style="color:var(--pee)">5,000 people</span> peed into the Grand Canyon?</div>
+  <div class="abs" id="x5000" style="left:0;right:0;top:450px;text-align:center;opacity:0"><span class="chip" style="font-size:44px">× 5,000 people on the rim</span></div>
+  <div class="abs" id="physT" style="left:60px;top:170px;opacity:0"><div class="big" style="color:#fff;-webkit-text-stroke:3px var(--ink)">First, physics.</div></div>
+  <div class="abs" id="dropLbl" style="left:0;right:0;top:330px;text-align:center;opacity:0"><span class="chip">stream → droplets</span></div>
+  <div class="abs" id="clockLbl" style="left:0;right:0;top:330px;text-align:center;opacity:0"><span class="chip">⏱ several minutes to fall</span></div>
+  <div class="abs" id="volLbl" style="left:0;right:0;top:170px;text-align:center;opacity:0"><div class="panel" style="display:inline-block;padding:18px 36px"><div style="font:600 34px Fredoka">The Grand Canyon holds</div><div style="font:700 86px Fredoka">4.17 trillion m³</div><div class="src">Volume: US National Park Service</div></div></div>
+  <div class="abs" id="fracLbl" style="left:0;right:0;top:480px;text-align:center;opacity:0"><span class="chip" style="background:var(--peeD);color:var(--ink)">our 6 bathtubs ≈ 0.0000000000003 of it</span></div>
+  <div class="abs" id="msLbl" style="left:0;right:0;top:480px;text-align:center;opacity:0"><span class="chip" style="background:var(--river)">river clears it in ≈ 4 milliseconds</span></div>
+  <div class="abs" id="safeT" style="left:50px;right:50px;top:160px;opacity:0" ><div class="title">The Grand Canyon is safe.</div></div>
+  <div class="abs" id="notEnough" style="left:0;right:0;top:370px;text-align:center;opacity:0"><span class="chip" style="font-size:46px">Humanity: not enough 🤷</span></div>
+  <div class="abs" id="dont" style="left:0;right:0;top:370px;text-align:center;opacity:0"><span class="chip" style="font-size:46px;background:#E2462F">⚠ Please don't try this</span></div>
+  <div class="abs" id="cta" style="left:0;right:0;top:460px;text-align:center;opacity:0"><span class="chip" style="font-size:46px;background:var(--pee);color:var(--ink)">What should we fill next? 👇</span></div>
+</div>
+
+<!-- S3: amount -->
+<div class="scene" id="sAmount">
+  <div class="abs panel" style="left:60px;right:60px;top:200px;height:1050px"></div>
+  <svg class="abs" width="1080" height="1100" style="left:0;top:200px" id="amSvg">
+    <g id="cup" transform="translate(150,90)"><path d="M0 0 h150 l-18 200 h-114 z" fill="#fff" stroke="var(--ink)" stroke-width="8" stroke-linejoin="round"/><path id="cupFill" d="M8 60 h134 l-13 132 h-108 z" fill="var(--pee)"/></g>
+    <text x="360" y="200" font-family="Fredoka" font-weight="700" font-size="96" fill="var(--ink)" id="amA" opacity="0">0.25 L</text>
+    <text x="360" y="285" font-family="Fredoka" font-weight="600" font-size="38" fill="#5a5470" id="amA2" opacity="0">one typical pee</text>
+    <text x="540" y="430" font-family="Fredoka" font-weight="700" font-size="88" fill="var(--ink)" text-anchor="middle" id="amB" opacity="0">× 5,000 = 1,250 L</text>
+    <g id="tubs"></g>
+    <text x="540" y="990" font-family="Fredoka" font-weight="700" font-size="64" fill="var(--ink)" text-anchor="middle" id="amC" opacity="0">≈ 6 bathtubs</text>
+  </svg>
+  <div class="abs src" style="left:100px;top:1200px" id="amSrc">Typical void ≈ 200–250 mL (voiding-diary studies)</div>
+</div>
+
+<!-- S5: everyone -->
+<div class="scene" id="sWorld">
+  <svg class="abs" width="1080" height="1200" style="left:0;top:150px">
+    <g id="earthG" transform="translate(540,300)"><circle r="190" fill="#3C8DDE" stroke="var(--ink)" stroke-width="8"/>
+      <path d="M-120 -80 q40 -60 100 -30 q30 40 -10 70 q-40 20 -60 60 q-40 -20 -30 -100z M40 -150 q60 10 90 60 q-20 40 -70 20 q-40 -30 -20 -80z M20 40 q60 -10 100 30 q10 60 -40 90 q-50 -10 -60 -120z" fill="var(--green)"/>
+      <g id="crowd"></g></g>
+    <text x="540" y="590" font-family="Fredoka" font-weight="700" font-size="92" fill="var(--ink)" text-anchor="middle" id="popT">8.3 billion</text>
+    <g id="pools" transform="translate(140,650)"></g>
+    <text x="540" y="1010" font-family="Fredoka" font-weight="700" font-size="56" fill="var(--ink)" text-anchor="middle" id="poolT" opacity="0">≈ 800 Olympic pools</text>
+    <g id="barG" opacity="0" transform="translate(140,1120)"><rect width="800" height="56" rx="28" fill="#fff" stroke="var(--ink)" stroke-width="6"/><rect id="barFill" x="6" y="6" width="3" height="44" rx="2" fill="var(--peeD)"/>
+      <text x="400" y="-16" font-family="Fredoka" font-weight="700" font-size="44" fill="var(--ink)" text-anchor="middle">canyon filled: 0.00005%</text></g>
+  </svg>
+</div>
+
+<!-- S6: quadrillion -->
+<div class="scene" id="sEarths">
+  <svg class="abs" width="1080" height="1720" style="left:0;top:200px;overflow:hidden" id="earthsSvg"><g id="earthGrid"></g></svg>
+  <div class="abs" style="left:0;right:0;top:170px;text-align:center"><div class="panel" style="display:inline-block;padding:18px 40px"><div style="font:600 36px Fredoka">to fill it in one go</div><div style="font:700 92px Fredoka" id="quadT">17 quadrillion</div><div style="font:600 40px Fredoka">people</div></div></div>
+  <div class="abs" id="earthsLbl" style="left:0;right:0;top:1150px;text-align:center;opacity:0"><span class="chip" style="font-size:48px">≈ 2,000,000 Earths 🌍</span></div>
+</div>
+
+<!-- S7/S8: side view with dams -->
+<div class="scene" id="sSide">
+  <svg class="abs" width="1080" height="1590" viewBox="0 0 1080 1590" style="left:0;top:330px">
+    <defs><clipPath id="valClip"><path id="valPathC"/></clipPath></defs>
+    <path id="valley" fill="var(--rock2)" stroke="#5c2414" stroke-width="6" stroke-linejoin="round"/>
+    <g clip-path="url(#valClip)"><rect id="sideLake" x="0" y="1000" width="1080" height="1000" fill="var(--pee)" opacity=".92"/><g id="evap"></g></g>
+    <g id="dams" opacity="0"><rect x="70" y="140" width="46" height="560" rx="8" fill="#9aa3ad" stroke="var(--ink)" stroke-width="6"/><rect x="964" y="140" width="46" height="560" rx="8" fill="#9aa3ad" stroke="var(--ink)" stroke-width="6"/>
+      <text x="93" y="120" font-family="Fredoka" font-weight="700" font-size="34" fill="var(--ink)" text-anchor="middle">DAM</text><text x="987" y="120" font-family="Fredoka" font-weight="700" font-size="34" fill="var(--ink)" text-anchor="middle">DAM</text></g>
+    <g id="halfLine" opacity="0"><line x1="120" x2="960" stroke="var(--ink)" stroke-width="5" stroke-dasharray="18 12" id="halfL"/><text x="540" id="halfT" font-family="Fredoka" font-weight="700" font-size="36" fill="var(--ink)" text-anchor="middle">stalls at ≈ half the canyon’s area</text></g>
+  </svg>
+  <div class="abs" id="sideTitle" style="left:0;right:0;top:160px;text-align:center;opacity:0"><span class="chip" style="font-size:44px">Side view · whole canyon dammed</span></div>
+  <div class="abs" id="dayT" style="left:0;right:0;top:250px;text-align:center;opacity:0"><div class="panel" style="display:inline-block;padding:10px 34px"><span style="font:600 36px Fredoka">humanity: </span><span style="font:700 52px Fredoka">12 million m³ / day</span></div></div>
+  <div class="abs" id="realT" style="left:0;right:0;top:250px;text-align:center;opacity:0"><span class="chip" style="font-size:44px;background:#E2462F">Real life: the sun ☀️</span></div>
+  <div class="abs" id="yearT" style="left:0;right:0;top:1080px;text-align:center;opacity:0"><span class="chip" style="font-size:56px;background:var(--peeD);color:var(--ink)">Year <span id="yearN">0</span></span></div>
+  <div class="abs" id="balance" style="left:60px;right:60px;top:1060px;opacity:0;display:flex;gap:20px;justify-content:center">
+    <div class="panel" style="padding:12px 22px;text-align:center"><div style="font:600 30px Fredoka">pee in</div><div style="font:700 44px Fredoka;color:var(--peeD)">12.5 M m³/day</div></div>
+    <div class="panel" style="padding:12px 22px;text-align:center"><div style="font:600 30px Fredoka">sun out (if full)</div><div style="font:700 44px Fredoka;color:#E2462F">25.6 M m³/day</div></div>
+  </div>
+  <div class="abs src" id="evapSrc" style="left:0;right:0;top:1250px;text-align:center;opacity:0;color:#fff">Evaporation 1.9 m/yr: USGS, Lake Mead 2010–2019</div>
+</div>
+
+<div id="cap"></div>
+
+<script>
+const TL=__TIMELINE__;
+window.REQUIRED_FONTS={'Fredoka 700':'700 40px Fredoka','Inter 600':'600 40px Inter'};
+const $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), prog=(t,a,d)=>clamp((t-a)/d);
+const eo=x=>1-Math.pow(1-x,3), eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const B=n=>TL.beats.find(b=>b.name===n), S=(n,i)=>B(n).sentences[i];
+const W=(n,str)=>{for(const s of B(n).sentences){const i=s.text.indexOf(str);if(i>=0)return s.start+(s.end-s.start)*i/s.text.length}throw new Error('cue '+str)};
+const el=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e};
+function rng(seed){return()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646}}
+const R=rng(42);
+window.SFX=[];const sfx=(t,type)=>window.SFX.push({t:+(+t).toFixed(3),type});
+
+// ---------- canyon geometry ----------
+const wall=[[230,140],[290,250],[370,265],[400,390],[460,405],[490,560],[515,575],[530,760],[548,772],[566,760],[582,575],[607,560],[637,405],[697,390],[727,265],[807,250],[867,140]];
+const P=pts=>'M'+pts.map(p=>p.join(' ')).join(' L');
+const rockD=P([[0,140],...wall,[1080,140],[1080,1520],[0,1520]])+' Z';
+const voidD=P([...wall])+' Z';
+$('rockPathC').setAttribute('d',rockD);$('voidPathC').setAttribute('d',voidD);$('rockOutline').setAttribute('d',P([[0,140],...wall,[1080,140]]));
+const bands=['--rock3','--rock2','--rock1','--rock3','--rock4','--rock2','--rock5','--rock1','--rock4','--rock2','--rock5','--rock4','--rock5','--rock5','--rock5','--rock5','--rock5'];
+bands.forEach((c,i)=>el('rect',{x:0,y:140+i*85,width:1080,height:86,fill:`var(${c})`},$('strata')));
+for(let i=0;i<14;i++)el('path',{d:`M${R()*1080} ${180+R()*680} h${30+R()*60}`,stroke:'#00000022','stroke-width':5,'stroke-linecap':'round'},$('strata'));
+// people on both rims
+const skin=['#F2C9A0','#D9A06B','#A86B3C','#7A4A2A','#F5D7B5'], shirts=['#E2462F','#3B6FE0','#3BAE6A','#8A4FD8','#F28C28','#1F1B2E','#E64C9B'];
+const PEOPLE=[];
+for(let i=0;i<34;i++){const left=i<17, k=left?i:i-17; const x=left?18+k*12.6:878+k*11.6; const g=el('g',{opacity:0},$('people'));
+  el('rect',{x:x-5,y:116,width:10,height:18,rx:4,fill:shirts[Math.floor(R()*shirts.length)]},g);el('circle',{cx:x,cy:110,r:6.5,fill:skin[Math.floor(R()*skin.length)]},g);
+  PEOPLE.push({g,x,left,delay:R()*1.6});}
+// hero person (zoom target) at left rim edge
+const hero=el('g',{opacity:0},$('people'));el('rect',{x:207,y:112,width:13,height:22,rx:5,fill:'#3B6FE0'},hero);el('circle',{cx:213.5,cy:104,r:8,fill:'#D9A06B'},hero);
+el('circle',{cx:216,cy:103,r:1.6,fill:'#1F1B2E'},hero);el('circle',{cx:219.5,cy:103,r:1.6,fill:'#1F1B2E'},hero);
+// stream: arc from hero then droplets
+const arc=el('path',{d:'M221 124 Q236 118 246 136',stroke:'var(--pee)','stroke-width':3.2,fill:'none','stroke-linecap':'round',opacity:0},$('stream'));
+const DROPS=[];for(let i=0;i<70;i++){DROPS.push({c:el('circle',{r:2+R()*2.2,fill:'var(--pee)',opacity:0},$('drops')),x0:240+R()*80,sp:0.75+R()*0.5,ph:R()*6.28,off:R()})}
+// ---------- amount ----------
+for(let i=0;i<6;i++){const x=150+(i%3)*270, y=520+Math.floor(i/3)*200, g=el('g',{id:'tub'+i,opacity:0,transform:`translate(${x},${y})`},$('tubs'));
+  el('path',{d:'M0 30 h220 v40 q0 60 -60 60 h-100 q-60 0 -60 -60z',fill:'#fff',stroke:'var(--ink)','stroke-width':7},g);el('rect',{x:10,y:34,width:200,height:30,rx:8,fill:'var(--pee)'},g);
+  el('rect',{x:30,y:128,width:14,height:20,rx:4,fill:'var(--ink)'},g);el('rect',{x:176,y:128,width:14,height:20,rx:4,fill:'var(--ink)'},g);el('path',{d:'M190 30 v-26 h-30',stroke:'var(--ink)','stroke-width':7,fill:'none','stroke-linecap':'round'},g);}
+// ---------- world ----------
+for(let i=0;i<24;i++){const a=i/24*6.283;el('circle',{cx:Math.cos(a)*212,cy:Math.sin(a)*212,r:9,fill:shirts[i%shirts.length],stroke:'var(--ink)','stroke-width':3,opacity:0,class:'cr'},$('crowd'))}
+const POOLS=[];for(let r=0;r<20;r++)for(let c=0;c<40;c++)POOLS.push(el('rect',{x:c*20,y:r*15,width:17,height:12,rx:2,fill:'#5CC6E8',opacity:0},$('pools')));
+// ---------- earths grid (zoom-out) ----------
+const EG=$('earthGrid');const N=41;for(let r=0;r<N;r++)for(let c=0;c<N;c++){const g=el('g',{transform:`translate(${(c-20)*60},${(r-20)*60})`},EG);el('circle',{r:24,fill:'#3C8DDE',stroke:'#1F1B2E','stroke-width':3},g);el('path',{d:'M-14 -6 q8 -12 18 -4 q4 8 -4 12 q-8 4 -14 -8z M4 6 q10 -2 12 8 q-6 8 -12 0z',fill:'#3BAE6A'},g)}
+// ---------- side view ----------
+const val=[[40,140],[120,140],[180,260],[260,300],[330,470],[420,520],[470,690],[610,700],[650,520],[760,480],[820,300],[900,250],[960,140],[1040,140]];
+const valD=P([...val,[1040,1000],[40,1000]])+' Z';
+$('valley').setAttribute('d',P([[0,140],[40,140]])+' L'+val.map(p=>p.join(' ')).join(' L')+' L1080 140 L1080 1000 L0 1000 Z');
+$('valley').setAttribute('d',P([[0,140],...val,[1080,140],[1080,1590],[0,1590]])+' Z');
+$('valPathC').setAttribute('d',P([...val])+' Z');
+const EV=[];for(let i=0;i<12;i++)EV.push({p:el('path',{d:'',stroke:'#ffffffcc','stroke-width':7,fill:'none','stroke-linecap':'round'},$('evap')),x:180+i*62,ph:R()});
+
+// ---------- timing ----------
+const T={hook:B('hook').start,fall:B('fall').start,amount:B('amount').start,compare:B('compare').start,everyone:B('everyone').start,quad:B('quadrillion').start,patient:B('patient').start,twist:B('twist').start,close:B('close').start,end:TL.duration};
+const CH=[];TL.beats.forEach(b=>b.sentences.forEach(s=>s.chunks.forEach(c=>CH.push(c))));
+function fade(id,a,d=.35){const o=eo(prog(window.__t,a,d));$(id).style.opacity=o;return o}
+function inout(id,a,b,d=.3){const t=window.__t;const o=Math.min(eo(prog(t,a,d)),1-prog(t,b-d,d));$(id).style.opacity=clamp(o);return clamp(o)}
+function popIn(node,a,d=.35){const p=prog(window.__t,a,d);node.setAttribute('opacity',p>0?1:0);return p}
+function scene(id,a,b){const t=window.__t;const o=Math.min(clamp((t-a+.3)/.3),clamp((b+.3-t)/.3));$(id).style.opacity=o;return o>0}
+
+window.render=function(t){window.__t=t;
+ // sky bits
+ $('clouds').setAttribute('transform',`translate(${(t*6)%60-30},0)`);
+ const sunBoost=eo(prog(t,S('twist',1).start,.8))*(1-prog(t,T.close,.5));
+ $('sun').setAttribute('transform',`translate(880,250) scale(${1+sunBoost*.7}) translate(-880,-250)`);
+ // scenes
+ const canyonOn=scene('sCanyon',T.hook-.3,T.amount)||false; const canyonOn2=t>=T.compare-.3&&t<T.everyone+.3; const canyonOn3=t>=T.close-.3;
+ $('sCanyon').style.opacity=Math.max(canyonOn?+$('sCanyon').style.opacity:0, canyonOn2?Math.min(clamp((t-T.compare+.3)/.3),clamp((T.everyone+.3-t)/.3)):0, canyonOn3?clamp((t-T.close+.3)/.3):0);
+ scene('sAmount',T.amount,T.compare); scene('sWorld',T.everyone,T.quad); scene('sEarths',T.quad,T.patient); scene('sSide',T.patient,T.close);
+
+ // ===== canyon =====
+ PEOPLE.forEach(p=>{const a=.4+p.delay; const pp=prog(t,a,.3); p.g.setAttribute('opacity',pp>0?1:0); p.g.setAttribute('transform',`translate(0,${(1-back(pp))*-30})`);
+   if(t>=T.close){const sh=Math.sin((t-T.close)*8+p.x)*2; p.g.setAttribute('transform',`translate(0,${sh})`)}});
+ hero.setAttribute('opacity',prog(t,.3,.2)>0?1:0);
+ fade('hookT',.15,.45); $('hookT').style.opacity*= (1-prog(t,T.fall-.2,.3)); $('hookT').style.transform=`rotate(${Math.sin(t*2)*1.2}deg)`;
+ const x5=inout('x5000',S('hook',0).start+1.6,T.fall);
+ // zoom: fall beat zooms onto hero, then back out for the drizzle
+ const zin=eio(prog(t,T.fall+.1,1.2)), zout=eio(prog(t,S('fall',2).start-.2,1.4));
+ const z=1+2.6*zin*(1-zout); const fx=213, fy=120;
+ const tx=(540-fx*z)*(z>1?1:0)*(zin*(1-zout)) , ty=(250-fy*z)*(zin*(1-zout));
+ $('cv').style.transform= t<T.amount? `translate(${tx}px,${ty}px) scale(${z})` : (t>=T.close?'none':'none');
+ fade('physT',T.fall+.05); $('physT').style.opacity*=1-prog(t,S('fall',2).start-.3,.3);
+ const streamOn = t>=S('fall',1).start-.4 && t<T.amount;
+ arc.setAttribute('opacity',streamOn?1:0);
+ $('dropLbl').style.opacity=clamp(prog(t,S('fall',1).start,.3))*(1-prog(t,S('fall',2).start-.3,.3));
+ // droplets: just beyond the arc while zoomed, falling across the depth afterwards
+ const dStart=S('fall',1).start;
+ DROPS.forEach((d,i)=>{ if(t<dStart||t>=T.amount){d.c.setAttribute('opacity',0);return}
+   const life=(t-dStart)*d.sp*0.11+d.off; const f=life%1;
+   const y=140+f*620, x=d.x0+Math.sin(f*9+d.ph)*14+f*40;
+   d.c.setAttribute('cx',x);d.c.setAttribute('cy',y);d.c.setAttribute('opacity',f<.03?0:.95)});
+ $('ruler').setAttribute('opacity',eo(prog(t,W('fall','1.8')-.2,.4))*(1-prog(t,T.amount-.3,.3)));
+ $('clockLbl').style.opacity=eo(prog(t,W('fall','several'),.3))*(1-prog(t,T.amount-.3,.3));
+ $('stink').setAttribute('opacity',eo(prog(t,W('fall','smelly'),.3))*(1-prog(t,T.amount-.3,.3)));
+ $('stink').setAttribute('transform',`translate(0,${Math.sin(t*4)*6})`);
+ // compare
+ if(t>=T.compare-.3&&t<T.everyone+.3){ $('cv').style.transform='none'; PEOPLE.forEach(p=>p.g.setAttribute('opacity',1)); }
+ inout('volLbl',T.compare+.05,S('compare',2).start+.2);
+ const td=prog(t,S('compare',1).start,.3); $('tubDot').setAttribute('opacity',(td>0&&t<S('compare',2).start+1.2)?1:0);
+ inout('fracLbl',S('compare',1).start+.3,S('compare',2).start);
+ $('flow').setAttribute('opacity',(t>=S('compare',2).start&&t<T.everyone)?1:0); $('flow').firstChild.setAttribute('stroke-dashoffset',-t*120);
+ $('tubDot').setAttribute('transform',`translate(${eio(prog(t,W('compare','wash')+.2,.5))*400},0)`);
+ inout('msLbl',W('compare','wash'),T.everyone);
+ // close
+ const cl=t>=T.close; if(cl){$('cv').style.transform='none';}
+ inout('safeT',T.close+.05,T.end+1); inout('notEnough',S('close',1).start,S('close',2).start);
+ fade('dont',S('close',2).start); if(t<S('close',2).start)$('dont').style.opacity=0;
+ fade('cta',S('close',2).end+.3); if(t<S('close',2).end+.3)$('cta').style.opacity=0;
+ // lake in canyon only during close? keep empty (the point: never fills)
+ $('lake').setAttribute('y',900);
+
+ // ===== amount =====
+ const cupP=eo(prog(t,T.amount+.1,.5)); $('cupFill').setAttribute('transform',`translate(0,${(1-cupP)*130}) `);
+ popIn($('amA'),S('amount',0).start+.4); popIn($('amA2'),S('amount',0).start+.8);
+ popIn($('amB'),W('amount','5,000 of'));
+ for(let i=0;i<6;i++){const p=prog(t,W('amount','1,250')+.3+i*.22,.3);$('tub'+i).setAttribute('opacity',p>0?1:0);const x=150+(i%3)*270, y=520+Math.floor(i/3)*200;$('tub'+i).setAttribute('transform',`translate(${x},${y+(1-back(p))*-60})`)}
+ popIn($('amC'),S('amount',2).start);
+
+ // ===== world =====
+ const eg=eo(prog(t,T.everyone,.5)); $('earthG').setAttribute('transform',`translate(540,300) scale(${.6+.4*eg}) rotate(${(t-T.everyone)*4})`);
+ [...document.querySelectorAll('.cr')].forEach((c,i)=>c.setAttribute('opacity',prog(t,T.everyone+.5+i*.04,.1)>0?1:0));
+ const pp=prog(t,W('everyone','around 800')-.6,1.8); POOLS.forEach((r,i)=>r.setAttribute('opacity',i/800<pp?1:0));
+ popIn($('poolT'),W('everyone','around 800'));
+ $('barG').setAttribute('opacity',eo(prog(t,S('everyone',2).start,.3)));
+
+ // ===== earths zoom-out =====
+ const zq=prog(t,T.quad+.2,(S('quadrillion',1).end-T.quad)); const sc=3.2*Math.pow(0.45/3.2,eio(zq));
+ $('earthGrid').setAttribute('transform',`translate(540,760) scale(${sc})`);
+ fade('earthsLbl',S('quadrillion',1).start);
+
+ // ===== side view =====
+ $('dams').setAttribute('opacity',eo(prog(t,W('patient','Dam both'),.4)));
+ fade('dayT',S('patient',1).start); $('dayT').style.opacity*=1-prog(t,T.twist,.3);
+ const fillA=W('patient','send it all'), fillB=S('patient',2).end;
+ const fp=eio(prog(t,fillA,fillB-fillA));
+ const yrs=Math.round(917*fp); $('yearN').textContent=yrs>=917?'≈ 917':yrs;
+ fade('yearT',fillA); $('yearT').style.opacity*=1-prog(t,T.twist,.3);
+ // twist: level recedes to the equilibrium (~half the footprint, i.e. lower level in this profile)
+ const tw=eio(prog(t,S('twist',2).start-.2,2.2));
+ const full=140, empty=700, eq=470;
+ let lvl = t<T.twist ? empty-(empty-full)*fp*0.98 : (full+(eq-full)*tw);
+ if(t<fillA) lvl=empty+10;
+ $('sideLake').setAttribute('y',lvl);
+ const evOn=prog(t,S('twist',1).start,.4);
+ EV.forEach((e,i)=>{const ph=((t*0.7+e.ph)%1); const y0=lvl-10-ph*120; e.p.setAttribute('d',`M${e.x} ${y0} q12 -15 0 -30 q-12 -15 0 -30`); e.p.setAttribute('opacity',evOn*(1-ph))});
+ $('halfLine').setAttribute('opacity',eo(prog(t,S('twist',2).start+1.8,.4))); $('halfL').setAttribute('y1',eq);$('halfL').setAttribute('y2',eq); $('halfT').setAttribute('y',eq-16);
+ fade('balance',S('twist',1).start+.6); fade('realT',S('twist',0).start+.1); fade('evapSrc',S('twist',1).start+.6);
+ $('sideTitle').style.opacity=eo(prog(t,W('patient','Dam both'),.4));
+
+ // captions
+ const c=CH.find(c=>t>=c.start-.05&&t<c.end+.12); $('cap').innerHTML=c&&t<S('close',2).end+.25?`<span>${c.text}</span>`:'';
+};
+// sound cues
+PEOPLE.forEach((p,i)=>{if(i%3==0)sfx(.4+p.delay,'pop')});
+sfx(T.fall+.1,'whoosh'); sfx(S('fall',1).start,'drip'); sfx(S('fall',2).start-.2,'whoosh');
+sfx(T.amount+.1,'splash'); sfx(W('amount','5,000 of'),'pop'); for(let i=0;i<6;i++)sfx(W('amount','1,250')+.3+i*.22,'pop'); sfx(S('amount',2).start,'ding');
+sfx(S('compare',1).start,'boing'); sfx(W('compare','wash')+.2,'whoosh');
+sfx(T.everyone+.1,'whoosh'); sfx(S('everyone',2).start,'boing');
+sfx(T.quad+.2,'whoosh'); sfx(S('quadrillion',1).start,'ding');
+sfx(W('patient','Dam both'),'thud'); sfx(S('twist',0).start,'boing'); sfx(S('close',2).start,'thud'); sfx(S('close',2).end+.3,'ding');
+</script></body></html>

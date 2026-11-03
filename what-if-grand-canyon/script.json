@@ -1,0 +1,30 @@
+{
+ "title": "What if 5,000 people peed into the Grand Canyon?",
+ "beats": [
+  ["hook", [["What if 5,000 people lined up on the edge of the Grand Canyon…", "What if five thousand people lined up on the edge of the Grand Canyon,"],
+            ["and all peed at once?", null]]],
+  ["fall", [["First, physics.", null],
+            ["Within a metre or two, each stream breaks into droplets.", null],
+            ["The canyon is up to 1.8 kilometres deep, so the drops drift down for several minutes, as a fine, smelly drizzle.", "The canyon is up to one point eight kilometres deep, so the drops drift down for several minutes, as a fine, smelly drizzle."]]],
+  ["amount", [["A typical pee is about a quarter of a litre.", null],
+              ["5,000 of them make about 1,250 litres.", "Five thousand of them make about twelve hundred and fifty litres."],
+              ["That's roughly six bathtubs.", null]]],
+  ["compare", [["The Grand Canyon holds about 4.17 trillion cubic metres.", "The Grand Canyon holds about four point one seven trillion cubic metres."],
+               ["Our six bathtubs fill about three ten-trillionths of it.", null],
+               ["And the Colorado River would wash it all away in about four milliseconds.", null]]],
+  ["everyone", [["Okay. What if all 8.3 billion people peed at once?", "Okay. What if all eight point three billion people peed at once?"],
+                ["That's about two million cubic metres, around 800 Olympic pools.", "That's about two million cubic metres, around eight hundred Olympic pools."],
+                ["Still just 0.00005% of the canyon.", "Still just zero point zero zero zero zero five percent of the canyon."]]],
+  ["quadrillion", [["To fill it in one go, you'd need about 17 quadrillion people.", "To fill it in one go, you'd need about seventeen quadrillion people."],
+                   ["That's two million Earths' worth of humans.", null]]],
+  ["patient", [["So let's be patient.", null],
+               ["Humanity makes about 12 million cubic metres of pee a day.", "Humanity makes about twelve million cubic metres of pee a day."],
+               ["Dam both ends of the canyon, send it all here, and it would take about 900 years.", "Dam both ends of the canyon, send it all here, and it would take about nine hundred years."]]],
+  ["twist", [["Except it wouldn't work.", null],
+             ["This is a desert. Lakes here lose about 1.9 metres of water a year to evaporation.", "This is a desert. Lakes here lose about one point nine metres of water a year to evaporation."],
+             ["Once our lake covered about half the canyon, the sun would evaporate pee as fast as all of humanity could make it.", null]]],
+  ["close", [["So the Grand Canyon is safe.", null],
+             ["Humanity just isn't enough.", null],
+             ["Please don't try this.", null]]]
+ ]
+}

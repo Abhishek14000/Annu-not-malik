@@ -101,3 +101,11 @@ How retrieval behaves:
 python3 -m unittest discover -s tests -v
 ```
 The tests use a mock provider server on localhost and cover retries, `Retry-After`, the rate limit, blocked and unreachable providers, falling back to thumbnails when a download isn't an image, and the review gate. They make no real network calls.
+
+## Reusing the engine for other videos
+`src/build_vo.py`, `src/render.js` and `src/mix.py` are shared with `../../what-if-grand-canyon/`. They take three options:
+- `BEATS_FILE=script.json`: narration from JSON instead of the built-in Ashoka script.
+- `window.REQUIRED_FONTS` on the page: the fonts the renderer must confirm loaded (defaults to the Ashoka fonts).
+- `MUSIC=playful`: a plucked major-key music bed instead of the drone. The mixer also has `pop`, `splash`, `ding`, `boing` and `drip` sound effects.
+
+Defaults are unchanged, so the Ashoka render is identical.

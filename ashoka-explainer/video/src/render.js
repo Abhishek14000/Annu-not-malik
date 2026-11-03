@@ -20,7 +20,8 @@ const fs = require('fs'), path = require('path');
   await p.evaluate(() => document.fonts.ready);
   // Fonts: make sure the web fonts actually loaded (no silent fallback).
   const fonts = await p.evaluate(async () => {
-    const want = {'Playfair 900': '900 40px Playfair', 'Inter 800': '800 40px Inter', 'Brahmi': '40px Brahmi'};
+    // A page can declare its own fonts as window.REQUIRED_FONTS = {label: 'css font shorthand'}.
+    const want = window.REQUIRED_FONTS || {'Playfair 900': '900 40px Playfair', 'Inter 800': '800 40px Inter', 'Brahmi': '40px Brahmi'};
     const out = {};
     for (const [k, f] of Object.entries(want)) {
       try { await document.fonts.load(f, k === 'Brahmi' ? '\u{11024}' : 'A'); } catch (e) { /* reported below */ }

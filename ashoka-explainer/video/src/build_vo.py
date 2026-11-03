@@ -50,6 +50,8 @@ BEATS=[
  ("close",[("So was it conscience or strategy?",None),("Historians still argue.",None),
            ("Either way, it's a rare moment where a ruler lets us read his emotions.",None),("And they're still on the rock.",None)]),
 ]
+if os.environ.get("BEATS_FILE"):  # other projects pass their own script: {"beats": [[name, [[display, spoken|null], ...]], ...]}
+    BEATS = [(n, [(d, sp) for d, sp in ss]) for n, ss in json.load(open(os.environ["BEATS_FILE"], encoding="utf-8"))["beats"]]
 DEF = {"kokoro": ("0.48", "1.2", "3.0"), "piper": ("0.38", "0.85", "2.2")}[ENGINE]  # pacing tuned to a 2:00 cut with kokoro
 GAP_S=float(os.environ.get("GAP_SENT", DEF[0])); GAP_B=float(os.environ.get("GAP_BEAT", DEF[1]))
 def synth(t):

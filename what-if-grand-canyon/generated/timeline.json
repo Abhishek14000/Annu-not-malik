@@ -1,0 +1,609 @@
+{
+ "duration": 93.465,
+ "voice": "kokoro-v1.0 af_heart speed 1.0",
+ "beats": [
+  {
+   "name": "hook",
+   "start": 0.35,
+   "sentences": [
+    {
+     "start": 0.35,
+     "end": 3.858,
+     "text": "What if 5,000 people lined up on the edge of the Grand Canyon\u2026",
+     "chunks": [
+      {
+       "start": 0.35,
+       "end": 1.539,
+       "text": "What if 5,000 people"
+      },
+      {
+       "start": 1.539,
+       "end": 2.431,
+       "text": "lined up on the"
+      },
+      {
+       "start": 2.431,
+       "end": 3.085,
+       "text": "edge of the"
+      },
+      {
+       "start": 3.085,
+       "end": 3.858,
+       "text": "Grand Canyon\u2026"
+      }
+     ]
+    },
+    {
+     "start": 4.208,
+     "end": 5.408,
+     "text": "and all peed at once?",
+     "chunks": [
+      {
+       "start": 4.208,
+       "end": 4.928,
+       "text": "and all peed"
+      },
+      {
+       "start": 4.928,
+       "end": 5.408,
+       "text": "at once?"
+      }
+     ]
+    }
+   ],
+   "end": 6.108
+  },
+  {
+   "name": "fall",
+   "start": 6.108416666666667,
+   "sentences": [
+    {
+     "start": 6.108,
+     "end": 7.052,
+     "text": "First, physics.",
+     "chunks": [
+      {
+       "start": 6.108,
+       "end": 6.513,
+       "text": "First,"
+      },
+      {
+       "start": 6.513,
+       "end": 7.052,
+       "text": "physics."
+      }
+     ]
+    },
+    {
+     "start": 7.402,
+     "end": 10.456,
+     "text": "Within a metre or two, each stream breaks into droplets.",
+     "chunks": [
+      {
+       "start": 7.402,
+       "end": 8.209,
+       "text": "Within a metre"
+      },
+      {
+       "start": 8.209,
+       "end": 8.612,
+       "text": "or two,"
+      },
+      {
+       "start": 8.612,
+       "end": 9.649,
+       "text": "each stream breaks"
+      },
+      {
+       "start": 9.649,
+       "end": 10.455,
+       "text": "into droplets."
+      }
+     ]
+    },
+    {
+     "start": 10.806,
+     "end": 18.258,
+     "text": "The canyon is up to 1.8 kilometres deep, so the drops drift down for several minutes, as a fine, smelly drizzle.",
+     "chunks": [
+      {
+       "start": 10.806,
+       "end": 11.92,
+       "text": "The canyon is up"
+      },
+      {
+       "start": 11.92,
+       "end": 13.522,
+       "text": "to 1.8 kilometres deep,"
+      },
+      {
+       "start": 13.522,
+       "end": 14.776,
+       "text": "so the drops drift"
+      },
+      {
+       "start": 14.776,
+       "end": 16.517,
+       "text": "down for several minutes,"
+      },
+      {
+       "start": 16.517,
+       "end": 17.214,
+       "text": "as a fine,"
+      },
+      {
+       "start": 17.214,
+       "end": 18.258,
+       "text": "smelly drizzle."
+      }
+     ]
+    }
+   ],
+   "end": 18.958
+  },
+  {
+   "name": "amount",
+   "start": 18.958291666666664,
+   "sentences": [
+    {
+     "start": 18.958,
+     "end": 21.382,
+     "text": "A typical pee is about a quarter of a litre.",
+     "chunks": [
+      {
+       "start": 18.958,
+       "end": 19.882,
+       "text": "A typical pee is"
+      },
+      {
+       "start": 19.882,
+       "end": 20.92,
+       "text": "about a quarter of"
+      },
+      {
+       "start": 20.92,
+       "end": 21.382,
+       "text": "a litre."
+      }
+     ]
+    },
+    {
+     "start": 21.732,
+     "end": 25.169,
+     "text": "5,000 of them make about 1,250 litres.",
+     "chunks": [
+      {
+       "start": 21.732,
+       "end": 23.404,
+       "text": "5,000 of them make"
+      },
+      {
+       "start": 23.404,
+       "end": 25.169,
+       "text": "about 1,250 litres."
+      }
+     ]
+    },
+    {
+     "start": 25.519,
+     "end": 27.049,
+     "text": "That's roughly six bathtubs.",
+     "chunks": [
+      {
+       "start": 25.519,
+       "end": 27.049,
+       "text": "That's roughly six bathtubs."
+      }
+     ]
+    }
+   ],
+   "end": 27.749
+  },
+  {
+   "name": "compare",
+   "start": 27.749166666666667,
+   "sentences": [
+    {
+     "start": 27.749,
+     "end": 31.972,
+     "text": "The Grand Canyon holds about 4.17 trillion cubic metres.",
+     "chunks": [
+      {
+       "start": 27.749,
+       "end": 29.47,
+       "text": "The Grand Canyon holds"
+      },
+      {
+       "start": 29.47,
+       "end": 30.956,
+       "text": "about 4.17 trillion"
+      },
+      {
+       "start": 30.956,
+       "end": 31.972,
+       "text": "cubic metres."
+      }
+     ]
+    },
+    {
+     "start": 32.322,
+     "end": 35.098,
+     "text": "Our six bathtubs fill about three ten-trillionths of it.",
+     "chunks": [
+      {
+       "start": 32.322,
+       "end": 33.402,
+       "text": "Our six bathtubs fill"
+      },
+      {
+       "start": 33.402,
+       "end": 34.79,
+       "text": "about three ten-trillionths"
+      },
+      {
+       "start": 34.79,
+       "end": 35.098,
+       "text": "of it."
+      }
+     ]
+    },
+    {
+     "start": 35.448,
+     "end": 39.296,
+     "text": "And the Colorado River would wash it all away in about four milliseconds.",
+     "chunks": [
+      {
+       "start": 35.448,
+       "end": 36.657,
+       "text": "And the Colorado River"
+      },
+      {
+       "start": 36.657,
+       "end": 37.592,
+       "text": "would wash it all"
+      },
+      {
+       "start": 37.592,
+       "end": 38.307,
+       "text": "away in about"
+      },
+      {
+       "start": 38.307,
+       "end": 39.296,
+       "text": "four milliseconds."
+      }
+     ]
+    }
+   ],
+   "end": 39.996
+  },
+  {
+   "name": "everyone",
+   "start": 39.99600000000001,
+   "sentences": [
+    {
+     "start": 39.996,
+     "end": 43.441,
+     "text": "Okay. What if all 8.3 billion people peed at once?",
+     "chunks": [
+      {
+       "start": 39.996,
+       "end": 40.362,
+       "text": "Okay."
+      },
+      {
+       "start": 40.362,
+       "end": 41.462,
+       "text": "What if all 8.3"
+      },
+      {
+       "start": 41.462,
+       "end": 42.854,
+       "text": "billion people peed"
+      },
+      {
+       "start": 42.854,
+       "end": 43.441,
+       "text": "at once?"
+      }
+     ]
+    },
+    {
+     "start": 43.791,
+     "end": 47.922,
+     "text": "That's about two million cubic metres, around 800 Olympic pools.",
+     "chunks": [
+      {
+       "start": 43.791,
+       "end": 45.39,
+       "text": "That's about two million"
+      },
+      {
+       "start": 45.39,
+       "end": 46.256,
+       "text": "cubic metres,"
+      },
+      {
+       "start": 46.256,
+       "end": 47.922,
+       "text": "around 800 Olympic pools."
+      }
+     ]
+    },
+    {
+     "start": 48.272,
+     "end": 52.774,
+     "text": "Still just 0.00005% of the canyon.",
+     "chunks": [
+      {
+       "start": 48.272,
+       "end": 51.273,
+       "text": "Still just 0.00005% of"
+      },
+      {
+       "start": 51.273,
+       "end": 52.774,
+       "text": "the canyon."
+      }
+     ]
+    }
+   ],
+   "end": 53.474
+  },
+  {
+   "name": "quadrillion",
+   "start": 53.47391666666668,
+   "sentences": [
+    {
+     "start": 53.474,
+     "end": 57.217,
+     "text": "To fill it in one go, you'd need about 17 quadrillion people.",
+     "chunks": [
+      {
+       "start": 53.474,
+       "end": 54.313,
+       "text": "To fill it in"
+      },
+      {
+       "start": 54.313,
+       "end": 54.765,
+       "text": "one go,"
+      },
+      {
+       "start": 54.765,
+       "end": 55.991,
+       "text": "you'd need about 17"
+      },
+      {
+       "start": 55.991,
+       "end": 57.217,
+       "text": "quadrillion people."
+      }
+     ]
+    },
+    {
+     "start": 57.567,
+     "end": 59.626,
+     "text": "That's two million Earths' worth of humans.",
+     "chunks": [
+      {
+       "start": 57.567,
+       "end": 58.842,
+       "text": "That's two million Earths'"
+      },
+      {
+       "start": 58.842,
+       "end": 59.626,
+       "text": "worth of humans."
+      }
+     ]
+    }
+   ],
+   "end": 60.326
+  },
+  {
+   "name": "patient",
+   "start": 60.325958333333354,
+   "sentences": [
+    {
+     "start": 60.326,
+     "end": 61.471,
+     "text": "So let's be patient.",
+     "chunks": [
+      {
+       "start": 60.326,
+       "end": 61.471,
+       "text": "So let's be patient."
+      }
+     ]
+    },
+    {
+     "start": 61.821,
+     "end": 65.272,
+     "text": "Humanity makes about 12 million cubic metres of pee a day.",
+     "chunks": [
+      {
+       "start": 61.821,
+       "end": 63.239,
+       "text": "Humanity makes about 12"
+      },
+      {
+       "start": 63.239,
+       "end": 64.656,
+       "text": "million cubic metres of"
+      },
+      {
+       "start": 64.656,
+       "end": 65.272,
+       "text": "pee a day."
+      }
+     ]
+    },
+    {
+     "start": 65.622,
+     "end": 70.556,
+     "text": "Dam both ends of the canyon, send it all here, and it would take about 900 years.",
+     "chunks": [
+      {
+       "start": 65.622,
+       "end": 66.647,
+       "text": "Dam both ends of"
+      },
+      {
+       "start": 66.647,
+       "end": 67.352,
+       "text": "the canyon,"
+      },
+      {
+       "start": 67.352,
+       "end": 68.441,
+       "text": "send it all here,"
+      },
+      {
+       "start": 68.441,
+       "end": 69.531,
+       "text": "and it would take"
+      },
+      {
+       "start": 69.531,
+       "end": 70.556,
+       "text": "about 900 years."
+      }
+     ]
+    }
+   ],
+   "end": 71.256
+  },
+  {
+   "name": "twist",
+   "start": 71.25562500000002,
+   "sentences": [
+    {
+     "start": 71.256,
+     "end": 72.389,
+     "text": "Except it wouldn't work.",
+     "chunks": [
+      {
+       "start": 71.256,
+       "end": 72.389,
+       "text": "Except it wouldn't work."
+      }
+     ]
+    },
+    {
+     "start": 72.739,
+     "end": 78.564,
+     "text": "This is a desert. Lakes here lose about 1.9 metres of water a year to evaporation.",
+     "chunks": [
+      {
+       "start": 72.739,
+       "end": 73.992,
+       "text": "This is a desert."
+      },
+      {
+       "start": 73.992,
+       "end": 75.54,
+       "text": "Lakes here lose about"
+      },
+      {
+       "start": 75.54,
+       "end": 76.941,
+       "text": "1.9 metres of water"
+      },
+      {
+       "start": 76.941,
+       "end": 78.564,
+       "text": "a year to evaporation."
+      }
+     ]
+    },
+    {
+     "start": 78.914,
+     "end": 85.162,
+     "text": "Once our lake covered about half the canyon, the sun would evaporate pee as fast as all of humanity could make it.",
+     "chunks": [
+      {
+       "start": 78.914,
+       "end": 80.117,
+       "text": "Once our lake covered"
+      },
+      {
+       "start": 80.117,
+       "end": 81.378,
+       "text": "about half the canyon,"
+      },
+      {
+       "start": 81.378,
+       "end": 82.697,
+       "text": "the sun would evaporate"
+      },
+      {
+       "start": 82.697,
+       "end": 83.499,
+       "text": "pee as fast as"
+      },
+      {
+       "start": 83.499,
+       "end": 84.703,
+       "text": "all of humanity could"
+      },
+      {
+       "start": 84.703,
+       "end": 85.162,
+       "text": "make it."
+      }
+     ]
+    }
+   ],
+   "end": 85.862
+  },
+  {
+   "name": "close",
+   "start": 85.86170833333335,
+   "sentences": [
+    {
+     "start": 85.862,
+     "end": 87.423,
+     "text": "So the Grand Canyon is safe.",
+     "chunks": [
+      {
+       "start": 85.862,
+       "end": 86.96,
+       "text": "So the Grand Canyon"
+      },
+      {
+       "start": 86.96,
+       "end": 87.423,
+       "text": "is safe."
+      }
+     ]
+    },
+    {
+     "start": 87.773,
+     "end": 89.438,
+     "text": "Humanity just isn't enough.",
+     "chunks": [
+      {
+       "start": 87.773,
+       "end": 89.438,
+       "text": "Humanity just isn't enough."
+      }
+     ]
+    },
+    {
+     "start": 89.788,
+     "end": 90.965,
+     "text": "Please don't try this.",
+     "chunks": [
+      {
+       "start": 89.788,
+       "end": 90.965,
+       "text": "Please don't try this."
+      }
+     ]
+    }
+   ],
+   "end": 90.965
+  }
+ ]
+}
