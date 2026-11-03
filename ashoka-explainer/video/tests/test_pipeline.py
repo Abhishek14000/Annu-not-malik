@@ -84,6 +84,8 @@ class RetrievalTest(unittest.TestCase):
         self.tmp = tempfile.mkdtemp()
         m = assets.load()
         self.orig = copy.deepcopy(m)
+        for sl in m["slots"].values():  # clean fixture: no selections or candidates
+            sl.update(selected=None, candidates=[], download_status="not_attempted")
         self.man = os.path.join(self.tmp, "manifest.json"); assets.save(m, self.man)
         self.env = {k: os.environ.get(k) for k in ("OPENVERSE_API", "IA_BASE", "LOC_BASE")}
 
@@ -179,6 +181,15 @@ class RetrievalTest(unittest.TestCase):
         f = os.path.join(VIDEO, s["selected"]["file"])
         with open(f, "ab") as fh: fh.write(b"x")
         self.assertEqual(assets.slot_state(s)[0], "placeholder")
+
+    def test_existing_selection_preserved(self):
+        m = assets.load(self.man)
+        keep = {"origin": "manual", "file": "assets/manual/x.jpg", "licence": {"status": "reported-unverified"}, "authenticity": {"verified": True}}
+        m["slots"]["kalsi"].update(selected=keep, download_status="manual_unverified"); assets.save(m, self.man)
+        self.run_retrieval(providers="openverse")
+        s = assets.load(self.man)["slots"]["kalsi"]
+        self.assertEqual(s["selected"], keep); self.assertEqual(s["download_status"], "manual_unverified")
+        self.assertTrue(s["candidates"])  # candidates are still recorded alongside
 
     def test_repo_manifest_untouched(self):
         self.run_retrieval(providers="openverse")
